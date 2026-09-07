@@ -2,20 +2,28 @@ document.addEventListener('DOMContentLoaded', () => {
   renderizarBiblioteca();
 });
 
+// Respaldo de seguridad para la sesión
+function obtenerUsuario() {
+  if (typeof obtenerUsuarioActual === 'function') {
+    return obtenerUsuarioActual();
+  }
+  return JSON.parse(localStorage.getItem('usuarioLogueado')) || null;
+}
+
 function renderizarBiblioteca() {
   const container = document.getElementById('biblioteca-container');
   if (!container) return;
 
-  const usuario = obtenerUsuarioActual();
+  const usuario = obtenerUsuario();
 
-  // Si no está logueado: no se muestra contenido y bloquea el acceso
+  // Si no está logueado
   if (!usuario) {
     container.innerHTML = `
       <div class="login-card text-center mx-auto my-5">
         <i class="fa-solid fa-lock text-white fs-1 mb-3" style="color: #c026d3 !important;"></i>
         <h3 class="fw-bold mb-2 text-white">Acceso restringido</h3>
         <p class="text-secondary small mb-4">Debes iniciar sesión para acceder a tu biblioteca digital, historial de lectura y lista de deseos.</p>
-        <a href="login.html" class="btn-mf-primary text-decoration-none d-inline-block">
+        <a href="../login.html" class="btn-mf-primary text-decoration-none d-inline-block">
           <i class="fa-solid fa-right-to-bracket me-2"></i>Iniciar sesión
         </a>
       </div>
@@ -23,7 +31,7 @@ function renderizarBiblioteca() {
     return;
   }
 
-  // Si está logueado: renderiza la biblioteca
+  // Si está logueado
   container.innerHTML = `
     <h1 class="fw-bold mb-2 text-white">Mi Biblioteca Digital</h1>
     <p class="text-secondary mb-4">Bienvenido, ${usuario.nombre}. Aquí están tus tomos comprados.</p>

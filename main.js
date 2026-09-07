@@ -1,4 +1,4 @@
-// Arreglo de Novedades (6 imágenes exactas de /images/novedades)
+// Arreglo de Novedades
 const novedades = [
   { id: 1, titulo: "Demon Slayer #1", precio: 8990, demografia: "SHŌNEN", imagen: "images/novedades/Demon_Slayer_01.jpg" },
   { id: 2, titulo: "Kaguya-sama: Love is War #1", precio: 9490, demografia: "SEINEN", imagen: "images/novedades/Kaguya_sama_arg_01.jpg" },
@@ -8,7 +8,7 @@ const novedades = [
   { id: 6, titulo: "Call of the Night #1", precio: 8590, demografia: "SHŌNEN", imagen: "images/novedades/yofukashi_no_uta.jpg" }
 ];
 
-// Arreglo de Más Populares (8 imágenes exactas de /images/mas_populares)
+// Arreglo de Más Populares
 const populares = [
   { id: 101, titulo: "Ataque a los Titanes #1", precio: 9490, demografia: "SHŌNEN", imagen: "images/mas_populares/ataque_a_los_titanes_1.jpg" },
   { id: 102, titulo: "Atom: The Beginning #1", precio: 8990, demografia: "SEINEN", imagen: "images/mas_populares/Atom_the_beginning_1.png" },
@@ -21,7 +21,7 @@ const populares = [
 ];
 
 document.addEventListener("DOMContentLoaded", () => {
-  // Sincronizar miniaturas del carrusel con la transición activa de Bootstrap
+  // Sincronizar miniaturas del carrusel principal
   const heroCarousel = document.getElementById("heroCarousel");
   if (heroCarousel) {
     heroCarousel.addEventListener("slide.bs.carousel", (event) => {
@@ -79,47 +79,23 @@ document.addEventListener("DOMContentLoaded", () => {
       </div>
     `).join("");
   }
+
+  actualizarContadorCarrito();
+  actualizarEstadoSesionUI();
 });
-
-function agregarAlCarrito(id) {
-  const cartCount = document.getElementById("cart-count");
-  if (cartCount) {
-    let count = parseInt(cartCount.innerText) || 0;
-    cartCount.innerText = count + 1;
-  }
-}
-
-// Comprueba si hay un usuario logueado en localStorage
-function obtenerUsuarioActual() {
-  return JSON.parse(localStorage.getItem('usuarioLogueado')) || null;
-}
-
-//funciones login
-function agregarAlCarrito(productoId) {
-  const usuario = obtenerUsuarioActual();
-
-  if (!usuario) {
-    alert("Debes iniciar sesión para agregar productos al carrito.");
-    window.location.href = "./login.html";
-    return;
-  }
-
-  //funcion carrito
-  console.log("Producto agregado al carrito:", productoId);
-}
 
 // Obtiene el estado de la sesión
 function obtenerUsuarioActual() {
   return JSON.parse(localStorage.getItem('usuarioLogueado')) || null;
 }
 
-// Cierra sesión
+// Cierra la sesión
 function cerrarSesion() {
   localStorage.removeItem('usuarioLogueado');
   window.location.reload();
 }
 
-// Bloqueo al añadir productos si no hay sesión
+// Agregar producto al carrito
 function agregarAlCarrito(productoId) {
   const usuario = obtenerUsuarioActual();
 
@@ -136,6 +112,7 @@ function agregarAlCarrito(productoId) {
   alert("Producto agregado al carrito");
 }
 
+// Actualiza el contador visual del carrito
 function actualizarContadorCarrito() {
   const badge = document.getElementById('cart-count');
   if (badge) {
@@ -144,6 +121,28 @@ function actualizarContadorCarrito() {
   }
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-  actualizarContadorCarrito();
-});
+// Actualiza elementos del Navbar según la sesión activa
+function actualizarEstadoSesionUI() {
+  const userBadge = document.getElementById('user-badge');
+  const userActionBtn = document.getElementById('user-action-btn');
+  const usuario = obtenerUsuarioActual();
+
+  if (userBadge) {
+    userBadge.textContent = usuario ? usuario.nombre : 'Invitado';
+  }
+  if (userActionBtn) {
+    if (usuario) {
+      userActionBtn.href = "#";
+      userActionBtn.innerHTML = '<i class="fa-solid fa-right-from-bracket"></i>';
+      userActionBtn.title = "Cerrar sesión";
+      userActionBtn.onclick = (e) => {
+        e.preventDefault();
+        cerrarSesion();
+      };
+    } else {
+      userActionBtn.href = "login.html";
+      userActionBtn.innerHTML = '<i class="fa-solid fa-right-to-bracket"></i>';
+      userActionBtn.title = "Iniciar sesión";
+    }
+  }
+}

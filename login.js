@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const errorBox = document.getElementById('error-box');
 
   // Alternar ocultar/mostrar contraseña
-  if (btnTogglePass) {
+  if (btnTogglePass && passInput && eyeIcon) {
     btnTogglePass.addEventListener('click', () => {
       const isPassword = passInput.type === 'password';
       passInput.type = isPassword ? 'text' : 'password';
@@ -41,8 +41,10 @@ document.addEventListener('DOMContentLoaded', () => {
         localStorage.setItem('usuarioLogueado', JSON.stringify(usuario));
         window.location.href = 'index.html';
       } else {
-        errorBox.textContent = 'Correo o contraseña incorrectos.';
-        errorBox.classList.remove('d-none');
+        if (errorBox) {
+          errorBox.textContent = 'Correo o contraseña incorrectos.';
+          errorBox.classList.remove('d-none');
+        }
       }
     });
   }
