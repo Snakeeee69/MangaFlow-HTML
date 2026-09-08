@@ -257,3 +257,117 @@ form input:focus, form textarea:focus {
   outline: none !important;
   box-shadow: 0 0 0 2px rgba(192, 38, 211, 0.4) !important;
 }
+
+/* Paleta de Colores y Variables */
+:root {
+  --bg-dark-main: #090a12;
+  --bg-card-dark: #12131f;
+  --accent-magenta: #c026d3;
+  --accent-magenta-hover: #a21caf;
+  --accent-purple-light: #d178ff;
+  --text-muted-custom: #676767;
+}
+
+body.bg-dark-app {
+  background-color: var(--bg-dark-main) !important;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  color: #ffffff;
+}
+
+/* Tipografía y Utilitarios */
+.extra-small {
+  font-size: 0.75rem;
+}
+
+.shrink-0 {
+  flex-shrink: 0;
+}
+
+.hover-white:hover {
+  color: #ffffff !important;
+  transition: color 0.2s ease;
+}
+
+.hover-danger:hover {
+  color: #ef4444 !important;
+  transition: color 0.2s ease;
+}
+
+.bg-purple-badge {
+  background-color: rgba(192, 38, 211, 0.2);
+  color: var(--accent-magenta);
+}
+
+/* Botones Magenta */
+.btn-magenta {
+  background-color: var(--accent-magenta);
+  color: #ffffff;
+  border: none;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.btn-magenta:hover {
+  background-color: var(--accent-magenta-hover);
+  color: #ffffff;
+}
+
+.btn-magenta:active {
+  transform: scale(0.98);
+}
+
+/* Card de Productos */
+.cart-item-card {
+  transition: background-color 0.2s ease;
+}
+
+.cart-item-card:hover {
+  background-color: #171828 !important;
+}
+
+/* Personalización del Input Range (Slider de Puntos Magenta) */
+input[type="range"].custom-range {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 5px;
+  outline: none;
+}
+
+input[type="range"].custom-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--accent-magenta);
+  cursor: pointer;
+  transition: transform 0.15s ease-in-out;
+}
+
+input[type="range"].custom-range::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+}
+
+input[type="range"].custom-range::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--accent-magenta);
+  border: none;
+  cursor: pointer;
+}
+
+/* Modal Boleta Personalizada */
+#boletaModal .modal-content {
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+.space-y-2 > * + * {
+  margin-top: 0.5rem;
+}
+
+.space-y-3 > * + * {
+  margin-top: 0.75rem;
+}
