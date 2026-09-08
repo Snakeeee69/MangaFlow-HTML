@@ -13,7 +13,7 @@ body {
   font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 
-/* Card General */
+/*Card*/
 .card-panel {
   background-color: #12131f;
   border-radius: 12px;
@@ -53,7 +53,7 @@ body {
 .carousel-control-prev.custom-carousel-btn { left: 10px; }
 .carousel-control-next.custom-carousel-btn { right: 10px; }
 
-/* Indicadores */
+/*Indicadores*/
 .custom-indicators button {
   width: 10px !important;
   height: 10px !important;
@@ -71,7 +71,7 @@ body {
   background-color: #c800ff !important;
 }
 
-/* Miniaturas */
+/*Mini*/
 .nav-thumb img {
   border: 2px solid transparent;
   transition: all 0.2s ease;
@@ -85,7 +85,7 @@ body {
   opacity: 1;
 }
 
-/* Cards de productos */
+/*Cards*/
 .product-card {
   background-color: #12131f;
   border: 1px solid rgba(255, 255, 255, 0.05);
@@ -99,7 +99,7 @@ body {
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
 }
 
-/* Estilos Puntos */
+/*Estilos*/
 .bg-magenta {
   background-color: #c026d3 !important;
 }
@@ -235,3 +235,25 @@ body.login-body {
 
 .divider-o::before { margin-right: 0.75em; }
 .divider-o::after { margin-left: 0.75em; }
+
+/* Estilos adicionales para la vista Próximamente y la tipografía */
+.extra-small {
+  font-size: 0.75rem;
+}
+
+.leading-relaxed {
+  line-height: 1.6;
+}
+
+.bg-white-5 {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.transition-all {
+  transition: all 0.2s ease-in-out;
+}
+
+form input:focus, form textarea:focus {
+  outline: none !important;
+  box-shadow: 0 0 0 2px rgba(192, 38, 211, 0.4) !important;
+}

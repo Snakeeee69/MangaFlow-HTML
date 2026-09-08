@@ -1,6 +1,13 @@
-// Obtener puntos del usuario actual o 0 si es invitado
+// Obtener usuario activo
+function obtenerUsuarioActual() {
+  return JSON.parse(localStorage.getItem('mangaFlow_session')) || 
+         JSON.parse(localStorage.getItem('activeUser')) || 
+         JSON.parse(localStorage.getItem('usuarioLogueado'));
+}
+
+// Obtener puntos del usuario actual o 0 si no existe
 function obtenerPuntosIniciales() {
-  const usuario = JSON.parse(localStorage.getItem('usuarioLogueado'));
+  const usuario = obtenerUsuarioActual();
   return usuario ? (usuario.puntos || 0) : 0;
 }
 
@@ -13,7 +20,7 @@ const recompensas = [
     costoPuntos: 750,
     stock: 50,
     tipo: "merch",
-    descripcion: "Marcapáginas metálico con diseño exclusivo de MangaFlow. Ediciones de One Piece, Naruto y...",
+    descripcion: "Marcapáginas metálico con diseño exclusivo de MangaFlow. Ediciones de One Piece, Naruto y más.",
     imagen: "../images/recompensas/MarcaPaginas.jpg"
   },
   {
@@ -31,7 +38,7 @@ const recompensas = [
     costoPuntos: 2000,
     stock: 20,
     tipo: "merch",
-    descripcion: "Póster de alta calidad A2 con arte exclusivo de MangaFlow. Disponible en diseños de Berserk,...",
+    descripcion: "Póster de alta calidad A2 con arte exclusivo de MangaFlow. Disponible en diseños de Berserk...",
     imagen: "../images/recompensas/poster.jpeg"
   },
   {
@@ -76,7 +83,7 @@ const recompensas = [
     costoPuntos: 25000,
     stock: 5,
     tipo: "edicion-especial",
-    descripcion: "Canjea por una edición especial deluxe o tapa dura de nuestra colección premium. La joya de cualqui...",
+    descripcion: "Canjea por una edición especial deluxe o tapa dura de nuestra colección premium. La joya de cualquier colección.",
     imagen: "../images/recompensas/Manga_tapadura.png"
   }
 ];
@@ -101,6 +108,7 @@ let estadoSeleccionado = 'bueno';
 let historialCertificaciones = [];
 
 document.addEventListener("DOMContentLoaded", () => {
+  puntosUsuario = obtenerPuntosIniciales();
   actualizarVistaPuntos();
   renderRecompensas();
   initFormularioCertificacion();
@@ -137,10 +145,10 @@ function renderRecompensas() {
   const container = document.getElementById("sec-recompensas");
   if (!container) return;
 
-  const usuario = JSON.parse(localStorage.getItem('usuarioLogueado'));
+  const usuario = obtenerUsuarioActual();
 
   container.innerHTML = recompensas.map(r => {
-    const puedeCanjear = usuario && puntosUsuario >= r.costoPuntos && r.stock > 0;
+    const puedeCanjear = usuario && !usuario.isGuest && puntosUsuario >= r.costoPuntos && r.stock > 0;
     const badgeColor = r.tipo === 'edicion-especial' ? 'bg-warning text-dark' : r.tipo === 'manga' ? 'bg-primary' : 'bg-purple';
     const badgeTexto = r.tipo === 'edicion-especial' ? 'Premium' : r.tipo === 'manga' ? 'Manga' : 'Merch';
 
@@ -149,29 +157,29 @@ function renderRecompensas() {
         <div class="card-panel h-100 overflow-hidden d-flex flex-column justify-content-between p-0">
           <div>
             <div style="height: 160px; overflow: hidden;" class="position-relative">
-              <img src="${r.imagen}" alt="${r.nombre}" class="w-100 h-100" style="object-fit: cover;" onerror="this.src='../images/logo/logoMangaFlow.png'" />
+              <img src="${r.imagen}" alt="${r.nombre}" class="w-100 h-100" style="object-fit: cover;" onerror="this.onerror=null; this.src='../images/logo/logoMangaFlow.png';" />
               <span class="badge position-absolute top-0 end-0 m-2 ${badgeColor}">${badgeTexto}</span>
             </div>
             <div class="p-3">
               <h6 class="text-white fw-bold mb-1">${r.nombre}</h6>
-              <p class="text-secondary text-xs mb-3 line-clamp-2" style="font-size: 0.8rem;">${r.descripcion}</p>
+              <p class="text-secondary mb-3 line-clamp-2" style="font-size: 0.8rem;">${r.descripcion}</p>
             </div>
           </div>
           <div class="p-3 pt-0">
             <div class="d-flex justify-content-between align-items-center mb-2">
               <div>
                 <span class="fw-bold fs-6" style="color: #d178ff;">${r.costoPuntos.toLocaleString("es-CL")} pts</span>
-                <div class="text-secondary text-xs" style="font-size: 0.7rem;">Stock: ${r.stock}</div>
+                <div class="text-secondary" style="font-size: 0.7rem;">Stock: ${r.stock}</div>
               </div>
               <button class="btn btn-sm px-3 py-1 text-white fw-semibold" style="background-color: #c800ff; border-radius: 8px;"
                 ${!puedeCanjear ? 'disabled' : ''} onclick="canjear('${r.nombre}', ${r.costoPuntos})">
                 <i class="fa-solid fa-gift me-1"></i> Canjear
               </button>
             </div>
-            ${!usuario ? `
-              <p class="text-danger text-xs m-0" style="font-size: 0.7rem;">Inicia sesión para canjear</p>
+            ${(!usuario || usuario.isGuest) ? `
+              <p class="text-danger m-0" style="font-size: 0.7rem;">Inicia sesión para canjear</p>
             ` : !puedeCanjear && puntosUsuario < r.costoPuntos ? `
-              <p class="text-secondary text-xs m-0" style="font-size: 0.7rem;">Te faltan ${(r.costoPuntos - puntosUsuario).toLocaleString("es-CL")} pts</p>
+              <p class="text-secondary m-0" style="font-size: 0.7rem;">Te faltan ${(r.costoPuntos - puntosUsuario).toLocaleString("es-CL")} pts</p>
             ` : ''}
           </div>
         </div>
@@ -181,9 +189,9 @@ function renderRecompensas() {
 }
 
 function canjear(nombre, costo) {
-  const usuario = JSON.parse(localStorage.getItem('usuarioLogueado'));
+  const usuario = obtenerUsuarioActual();
 
-  if (!usuario) {
+  if (!usuario || usuario.isGuest) {
     alert("Debes iniciar sesión para acumular y canjear puntos.");
     window.location.href = "../login.html";
     return;
@@ -192,7 +200,11 @@ function canjear(nombre, costo) {
   if (puntosUsuario >= costo) {
     puntosUsuario -= costo;
     usuario.puntos = puntosUsuario;
+    
+    // Sincronizar en todas las llaves posibles
     localStorage.setItem('usuarioLogueado', JSON.stringify(usuario));
+    localStorage.setItem('mangaFlow_session', JSON.stringify(usuario));
+    localStorage.setItem('activeUser', JSON.stringify(usuario));
 
     actualizarVistaPuntos();
     renderRecompensas();
@@ -213,7 +225,7 @@ function canjear(nombre, costo) {
 function initFormularioCertificacion() {
   const selectManga = document.getElementById("select-manga");
   if (selectManga) {
-    selectManga.innerHTML += mangasDisponibles.map(m => `<option value="${m.id}">${m.titulo}</option>`).join("");
+    selectManga.innerHTML = `<option value="">Selecciona una serie</option>` + mangasDisponibles.map(m => `<option value="${m.id}">${m.titulo}</option>`).join("");
   }
 
   const contEstados = document.getElementById("contenedor-estados");
@@ -248,8 +260,8 @@ function cargarTomos() {
 function procesarCertificacion(e) {
   e.preventDefault();
 
-  const usuario = JSON.parse(localStorage.getItem('usuarioLogueado'));
-  if (!usuario) {
+  const usuario = obtenerUsuarioActual();
+  if (!usuario || usuario.isGuest) {
     alert("Debes iniciar sesión para entregar mangas y reclamar puntos.");
     window.location.href = "../login.html";
     return;
@@ -264,7 +276,11 @@ function procesarCertificacion(e) {
 
   puntosUsuario += estadoObj.puntos;
   usuario.puntos = puntosUsuario;
+  
+  // Sincronización global del usuario
   localStorage.setItem('usuarioLogueado', JSON.stringify(usuario));
+  localStorage.setItem('mangaFlow_session', JSON.stringify(usuario));
+  localStorage.setItem('activeUser', JSON.stringify(usuario));
 
   actualizarVistaPuntos();
   renderRecompensas();
@@ -311,7 +327,7 @@ function renderHistorial() {
         <i class="fa-solid fa-circle-check ${item.color} fs-5"></i>
         <div>
           <h6 class="text-white fw-bold mb-0">${item.titulo} — Tomo ${item.tomo}</h6>
-          <span class="text-secondary text-xs">${item.estadoLabel} · ${item.fecha}</span>
+          <span class="text-secondary" style="font-size: 0.75rem;">${item.estadoLabel} · ${item.fecha}</span>
         </div>
       </div>
       <span class="fw-bold ${item.color}">${item.puntos > 0 ? '+' + item.puntos : '—'}</span>

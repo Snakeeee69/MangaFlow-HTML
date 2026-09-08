@@ -87,46 +87,64 @@ document.addEventListener("DOMContentLoaded", () => {
   actualizarContadorCarrito();
 });
 
-// Comprobar la sesión actual del usuario
+// Comprobar la sesión actual del usuario (Sincronización global)
 function checkUserSession() {
-  const session = JSON.parse(localStorage.getItem("mangaFlow_session")) || JSON.parse(sessionStorage.getItem("mangaFlow_session"));
+  const sessionData = JSON.parse(localStorage.getItem("mangaFlow_session")) || JSON.parse(localStorage.getItem("activeUser")) || JSON.parse(localStorage.getItem("usuarioLogueado"));
 
   const userBadge = document.getElementById("user-badge");
   const userActionBtn = document.getElementById("user-action-btn");
+  const navAccountLink = document.getElementById("nav-account-link");
 
-  if (session && !session.isGuest && session.email) {
-    const userName = session.nombre || session.email.split("@")[0];
-    
+  const relativePrefix = isSubfolder() ? "../" : "./";
+
+  if (sessionData && !sessionData.isGuest) {
+    const displayName = sessionData.nombre || sessionData.username || (sessionData.email ? sessionData.email.split("@")[0] : "Usuario");
+
     if (userBadge) {
-      userBadge.textContent = userName;
-      userBadge.classList.add("bg-primary", "text-white");
+      userBadge.textContent = displayName;
+      userBadge.style.backgroundColor = "#3b1754";
+      userBadge.style.color = "#d178ff";
     }
 
     if (userActionBtn) {
-      userActionBtn.href = isSubfolder() ? "../perfil.html" : "./perfil.html";
-      userActionBtn.title = "Mi Cuenta";
-      userActionBtn.innerHTML = '<i class="fa-solid fa-user"></i>';
+      userActionBtn.title = "Cerrar Sesión";
+      userActionBtn.className = "btn btn-dark border-0 p-2 text-danger";
+      userActionBtn.innerHTML = '<i class="fa-solid fa-right-from-bracket"></i>';
+      userActionBtn.onclick = logoutUser;
+    }
+
+    if (navAccountLink) {
+      navAccountLink.href = `${relativePrefix}cuenta/cuenta.html`;
     }
 
     bypassLoginIfAuthenticated();
   } else {
     if (userBadge) {
       userBadge.textContent = "Invitado";
-      userBadge.classList.remove("bg-primary", "text-white");
+      userBadge.style.backgroundColor = "#231238";
+      userBadge.style.color = "#d178ff";
     }
+
     if (userActionBtn) {
-      userActionBtn.href = isSubfolder() ? "../login.html" : "./login.html";
       userActionBtn.title = "Iniciar Sesión";
+      userActionBtn.className = "btn btn-dark border-0 p-2 text-secondary";
       userActionBtn.innerHTML = '<i class="fa-solid fa-right-to-bracket"></i>';
+      userActionBtn.onclick = function() {
+        window.location.href = `${relativePrefix}login.html`;
+      };
+    }
+
+    if (navAccountLink) {
+      navAccountLink.href = `${relativePrefix}login.html`;
     }
   }
 }
 
-// Redirigir fuera de login si ya está autenticado como usuario registrado
+// Redirigir si intenta entrar a login estando ya autenticado
 function bypassLoginIfAuthenticated() {
   const currentPath = window.location.pathname;
   if (currentPath.endsWith("login.html")) {
-    const targetPath = isSubfolder() ? "../perfil.html" : "./perfil.html";
+    const targetPath = isSubfolder() ? "../cuenta/cuenta.html" : "./cuenta/cuenta.html";
     window.location.href = targetPath;
   }
 }
@@ -136,7 +154,8 @@ function isSubfolder() {
   return window.location.pathname.includes("/catalogo/") || 
          window.location.pathname.includes("/puntos/") || 
          window.location.pathname.includes("/editoriales/") || 
-         window.location.pathname.includes("/biblioteca/");
+         window.location.pathname.includes("/biblioteca/") ||
+         window.location.pathname.includes("/cuenta/");
 }
 
 // Agregar producto al carrito por ID
@@ -169,20 +188,13 @@ function actualizarContadorCarrito() {
   }
 }
 
-// Iniciar sesión (para invocar desde login.html)
-function loginUser(userData, remember = true) {
-  if (remember) {
-    localStorage.setItem("mangaFlow_session", JSON.stringify(userData));
-  } else {
-    sessionStorage.setItem("mangaFlow_session", JSON.stringify(userData));
-  }
-  window.location.href = isSubfolder() ? "../index.html" : "./index.html";
-}
-
-// Cerrar sesión
+// Cerrar sesión limpiando todas las claves de usuario
 function logoutUser() {
   localStorage.removeItem("mangaFlow_session");
-  sessionStorage.removeItem("mangaFlow_session");
   localStorage.removeItem("activeUser");
-  window.location.href = isSubfolder() ? "../login.html" : "./login.html";
+  localStorage.removeItem("usuarioLogueado");
+  localStorage.removeItem("currentUser");
+  sessionStorage.clear();
+  const relativePrefix = isSubfolder() ? "../" : "./";
+  window.location.href = `${relativePrefix}index.html`;
 }

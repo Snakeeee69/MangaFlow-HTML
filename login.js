@@ -7,8 +7,10 @@ document.addEventListener('DOMContentLoaded', () => {
   if (loginForm) {
     loginForm.addEventListener('submit', (e) => {
       e.preventDefault();
-      errorAlert.classList.add('d-none');
-      errorAlert.textContent = '';
+      if (errorAlert) {
+        errorAlert.classList.add('d-none');
+        errorAlert.textContent = '';
+      }
 
       const email = document.getElementById('email').value.trim();
       const password = document.getElementById('password').value.trim();
@@ -28,15 +30,23 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
       }
 
-      //usuario_autenticado
+      // Generar nombre de usuario legible desde el correo
+      const extractedName = email.split('@')[0];
+      const formattedName = extractedName.charAt(0).toUpperCase() + extractedName.slice(1);
+
+      // Guardar datos unificados de sesión
       const sessionData = {
         role: 'user',
         email: email,
+        nombre: formattedName,
         points: 1500,
         isGuest: false
       };
 
       localStorage.setItem('mangaFlow_session', JSON.stringify(sessionData));
+      localStorage.setItem('activeUser', JSON.stringify(sessionData));
+      localStorage.setItem('currentUser', JSON.stringify(sessionData));
+
       window.location.href = './index.html';
     });
   }
@@ -47,19 +57,25 @@ document.addEventListener('DOMContentLoaded', () => {
       const guestSession = {
         role: 'guest',
         email: 'Invitado',
+        nombre: 'Invitado',
         points: 0,
         isGuest: true
       };
 
-      // Limpiar carrito al ingresar como invitado
+      // Limpiar carrito y datos de usuario previo
       localStorage.removeItem('mangaFlow_cart');
+      localStorage.removeItem('activeUser');
+      localStorage.removeItem('currentUser');
       localStorage.setItem('mangaFlow_session', JSON.stringify(guestSession));
+
       window.location.href = './index.html';
     });
   }
 
   function showError(message) {
-    errorAlert.textContent = message;
-    errorAlert.classList.remove('d-none');
+    if (errorAlert) {
+      errorAlert.textContent = message;
+      errorAlert.classList.remove('d-none');
+    }
   }
 });

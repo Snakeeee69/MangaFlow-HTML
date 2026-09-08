@@ -13,10 +13,10 @@
   <!-- Header Superior -->
   <header class="text-center py-4 border-bottom border-secondary border-opacity-10" style="background-color: #0b0b12;">
     <div class="container">
-      <a href="index.html" class="text-decoration-none">
+      <a href="./index.html" class="text-decoration-none">
         <div class="d-flex justify-content-center align-items-center mb-2">
           <div class="rounded-circle p-3 d-inline-flex align-items-center justify-content-center" style="background: linear-gradient(135deg, #a100ff, #e100ff); width: 64px; height: 64px;">
-            <img src="images/logo/logoMangaFlow.png" alt="MangaFlow Logo" class="rounded-circle" style="width: 48px; height: 48px; object-fit: cover;" onerror="this.onerror=null; this.outerHTML='<i class=\'fa-solid fa-book-open text-white fs-3\'></i>';" />
+            <img src="images/logo/logoMangaFlow.png" alt="MangaFlow Logo" class="rounded-circle" style="width: 48px; height: 48px; object-fit: cover;" onerror="this.outerHTML='<i class=\'fa-solid fa-book-open text-white fs-3\'></i>';" />
           </div>
         </div>
         <h1 class="fs-2 fw-bold text-white mb-1">Manga<span style="color: #d178ff;">Flow</span></h1>
@@ -35,23 +35,25 @@
 
       <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
         <ul class="navbar-nav align-items-center gap-2 me-lg-4">
-          <li class="nav-item"><a class="nav-link active px-3 py-1 rounded-3" style="background-color: #3b1754; color: #d178ff !important;" href="index.html">Inicio</a></li>
-          <li class="nav-item"><a class="nav-link px-3 text-white fw-semibold" href="catalogo/catalogo.html">Catálogo</a></li>
-          <li class="nav-item"><a class="nav-link px-3 text-white fw-semibold" href="puntos/puntos.html">Puntos y recompensas</a></li>
-          <li class="nav-item"><a class="nav-link px-3 text-white fw-semibold" href="editoriales/editoriales.html">Editoriales</a></li>
-          <li class="nav-item"><a class="nav-link px-3 text-white fw-semibold" href="biblioteca/biblioteca.html">Mi Biblioteca</a></li>
+          <li class="nav-item"><a class="nav-link active px-3 py-1 rounded-3" style="background-color: #3b1754; color: #d178ff !important;" href="./index.html">Inicio</a></li>
+          <li class="nav-item"><a class="nav-link px-3 text-white fw-semibold" href="./catalogo/catalogo.html">Catálogo</a></li>
+          <li class="nav-item"><a class="nav-link px-3 text-white fw-semibold" href="./puntos/puntos.html">Puntos y recompensas</a></li>
+          <li class="nav-item"><a class="nav-link px-3 text-white fw-semibold" href="./editoriales/editoriales.html">Editoriales</a></li>
+          <li class="nav-item"><a class="nav-link px-3 text-white fw-semibold" href="./biblioteca/biblioteca.html">Mi Biblioteca</a></li>
           <li class="nav-item position-relative">
-            <a class="nav-link px-3 text-white fw-semibold" href="#">Próximamente
+            <a class="nav-link px-3 text-white fw-semibold" href="./proximamente.html">Próximamente
               <span class="badge position-absolute top-0 start-100 translate-middle rounded-pill" style="font-size: 0.55rem; background-color: #a100ff;">NEW</span>
             </a>
           </li>
-          <li class="nav-item"><a class="nav-link px-3 text-white fw-semibold" href="login.html">Mi cuenta</a></li>
+          <li class="nav-item"><a id="nav-account-link" class="nav-link px-3 text-white fw-semibold" href="./login.html">Mi cuenta</a></li>
         </ul>
 
         <div class="d-flex align-items-center gap-2 mt-3 mt-lg-0">
           <span id="user-badge" class="badge px-3 py-2 rounded-3" style="background-color: #231238; color: #d178ff; border: 1px solid #3b1754;">Invitado</span>
-          <a id="user-action-btn" href="login.html" class="btn btn-dark border-0 p-2 text-secondary" style="background-color: #12131f;"><i class="fa-solid fa-right-to-bracket"></i></a>
-          <a href="carrito.html" class="btn btn-dark border-0 p-2 text-white position-relative" style="background-color: #12131f;">
+          <button id="user-action-btn" class="btn btn-dark border-0 p-2 text-secondary" style="background-color: #12131f;" title="Iniciar sesión">
+            <i class="fa-solid fa-right-to-bracket"></i>
+          </button>
+          <a href="./carrito.html" class="btn btn-dark border-0 p-2 text-white position-relative" style="background-color: #12131f;">
             <i class="fa-solid fa-cart-shopping"></i>
             <span id="cart-count" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="font-size: 0.6rem;">0</span>
           </a>
@@ -81,7 +83,7 @@
               <div class="carousel-item active">
                 <div class="row align-items-center g-4">
                   <div class="col-md-4 text-center">
-                    <a href="detalle-manga.html?id=106">
+                    <a href="./detalle-manga.html?id=106">
                       <img src="images/carrusel/Konosuba_arg_01.jpg" alt="KonoSuba" class="img-fluid rounded-3 shadow" style="max-height: 280px; object-fit: cover;" onerror="this.onerror=null; this.src='https://via.placeholder.com/200x280?text=KonoSuba';" />
                     </a>
                   </div>
@@ -92,8 +94,8 @@
                       Kazuma Satou muere en un accidente ridículo y es enviado a un mundo de fantasía con la diosa Aqua. Pero en lugar de un mundo glorioso, se encuentra con una pandilla de inútiles en un mundo lleno de monstruos...
                     </p>
                     <div class="d-flex gap-3">
-                      <a href="detalle-manga.html?id=106" class="btn px-4 py-2 text-white fw-bold" style="background: #c800ff; border: none; border-radius: 8px;">Ver manga</a>
-                      <a href="catalogo/catalogo.html" class="btn btn-outline-light px-4 py-2" style="border-radius: 8px;">Ver catálogo</a>
+                      <a href="./detalle-manga.html?id=106" class="btn px-4 py-2 text-white fw-bold" style="background: #c800ff; border: none; border-radius: 8px;">Ver manga</a>
+                      <a href="./catalogo/catalogo.html" class="btn btn-outline-light px-4 py-2" style="border-radius: 8px;">Ver catálogo</a>
                     </div>
                   </div>
                 </div>
@@ -103,7 +105,7 @@
               <div class="carousel-item">
                 <div class="row align-items-center g-4">
                   <div class="col-md-4 text-center">
-                    <a href="detalle-manga.html?id=102">
+                    <a href="./detalle-manga.html?id=102">
                       <img src="images/carrusel/Frieren_01.jpg" alt="Frieren" class="img-fluid rounded-3 shadow" style="max-height: 280px; object-fit: cover;" onerror="this.onerror=null; this.src='https://via.placeholder.com/200x280?text=Frieren';" />
                     </a>
                   </div>
@@ -114,8 +116,8 @@
                       Frieren es una elfa que vivió el viaje que derrotó al Rey Demonio hace 50 años. Ahora, tras la muerte de sus compañeros humanos, emprende un nuevo viaje para entender qué significa para ella la vida y la conexión...
                     </p>
                     <div class="d-flex gap-3">
-                      <a href="detalle-manga.html?id=102" class="btn px-4 py-2 text-white fw-bold" style="background: #c800ff; border: none; border-radius: 8px;">Ver manga</a>
-                      <a href="catalogo/catalogo.html" class="btn btn-outline-light px-4 py-2" style="border-radius: 8px;">Ver catálogo</a>
+                      <a href="./detalle-manga.html?id=102" class="btn px-4 py-2 text-white fw-bold" style="background: #c800ff; border: none; border-radius: 8px;">Ver manga</a>
+                      <a href="./catalogo/catalogo.html" class="btn btn-outline-light px-4 py-2" style="border-radius: 8px;">Ver catálogo</a>
                     </div>
                   </div>
                 </div>
@@ -125,8 +127,8 @@
               <div class="carousel-item">
                 <div class="row align-items-center g-4">
                   <div class="col-md-4 text-center">
-                    <a href="detalle-manga.html?id=6">
-                      <img src="images/novedades/Kaguya_sama_arg_01.jpg" alt="Love is War" class="img-fluid rounded-3 shadow" style="max-height: 280px; object-fit: cover;" onerror="this.onerror=null; this.src='https://via.placeholder.com/200x280?text=Love+Is+War';" />
+                    <a href="./detalle-manga.html?id=6">
+                      <img src="images/novedades/Kaguya_sama_arg_01.jpg" alt="Love is War" class="img-fluid rounded-3 shadow" style="max-height: 280px; object-fit: cover;" onerror="this.onerror=null; this.src='https://via.placeholder.com/200x280?text=Kaguya';" />
                     </a>
                   </div>
                   <div class="col-md-8 text-white">
@@ -136,8 +138,8 @@
                       Dos mentes brillantes del consejo estudiantil están profundamente enamoradas, pero su orgullo desmedido convertirá el amor en una auténtica batalla mental...
                     </p>
                     <div class="d-flex gap-3">
-                      <a href="detalle-manga.html?id=6" class="btn px-4 py-2 text-white fw-bold" style="background: #c800ff; border: none; border-radius: 8px;">Ver manga</a>
-                      <a href="catalogo/catalogo.html" class="btn btn-outline-light px-4 py-2" style="border-radius: 8px;">Ver catálogo</a>
+                      <a href="./detalle-manga.html?id=6" class="btn px-4 py-2 text-white fw-bold" style="background: #c800ff; border: none; border-radius: 8px;">Ver manga</a>
+                      <a href="./catalogo/catalogo.html" class="btn btn-outline-light px-4 py-2" style="border-radius: 8px;">Ver catálogo</a>
                     </div>
                   </div>
                 </div>
@@ -147,7 +149,7 @@
               <div class="carousel-item">
                 <div class="row align-items-center g-4">
                   <div class="col-md-4 text-center">
-                    <a href="detalle-manga.html?id=107">
+                    <a href="./detalle-manga.html?id=107">
                       <img src="images/carrusel/Oshi_no_ko_arg_01.jpg" alt="Oshi no Ko" class="img-fluid rounded-3 shadow" style="max-height: 280px; object-fit: cover;" onerror="this.onerror=null; this.src='https://via.placeholder.com/200x280?text=Oshi+no+Ko';" />
                     </a>
                   </div>
@@ -158,8 +160,8 @@
                       Un médico ginecólogo y su paciente reencarnan como los hijos gemelos de su Idol favorita. Un vistazo crudo y atrapante al mundo del espectáculo...
                     </p>
                     <div class="d-flex gap-3">
-                      <a href="detalle-manga.html?id=107" class="btn px-4 py-2 text-white fw-bold" style="background: #c800ff; border: none; border-radius: 8px;">Ver manga</a>
-                      <a href="catalogo/catalogo.html" class="btn btn-outline-light px-4 py-2" style="border-radius: 8px;">Ver catálogo</a>
+                      <a href="./detalle-manga.html?id=107" class="btn px-4 py-2 text-white fw-bold" style="background: #c800ff; border: none; border-radius: 8px;">Ver manga</a>
+                      <a href="./catalogo/catalogo.html" class="btn btn-outline-light px-4 py-2" style="border-radius: 8px;">Ver catálogo</a>
                     </div>
                   </div>
                 </div>
@@ -170,16 +172,16 @@
 
           <div class="col-md-2 d-none d-md-flex flex-column gap-2 align-items-center border-start border-secondary border-opacity-10 ps-3">
             <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="btn p-1 text-center border-0 bg-transparent nav-thumb active">
-              <img src="images/carrusel/Konosuba_arg_01.jpg" class="rounded-3 shadow mb-1" style="width: 52px; height: 68px; object-fit: cover;" onerror="this.onerror=null; this.src='https://via.placeholder.com/52x68?text=1';" />
+              <img src="images/carrusel/Konosuba_arg_01.jpg" class="rounded-3 shadow mb-1" style="width: 52px; height: 68px; object-fit: cover;" onerror="this.onerror=null; this.src='https://via.placeholder.com/52x68';" />
             </button>
             <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1" class="btn p-1 text-center border-0 bg-transparent nav-thumb">
-              <img src="images/carrusel/Frieren_01.jpg" class="rounded-3 shadow mb-1" style="width: 52px; height: 68px; object-fit: cover;" onerror="this.onerror=null; this.src='https://via.placeholder.com/52x68?text=2';" />
+              <img src="images/carrusel/Frieren_01.jpg" class="rounded-3 shadow mb-1" style="width: 52px; height: 68px; object-fit: cover;" onerror="this.onerror=null; this.src='https://via.placeholder.com/52x68';" />
             </button>
             <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2" class="btn p-1 text-center border-0 bg-transparent nav-thumb">
-              <img src="images/novedades/Kaguya_sama_arg_01.jpg" class="rounded-3 shadow mb-1" style="width: 52px; height: 68px; object-fit: cover;" onerror="this.onerror=null; this.src='https://via.placeholder.com/52x68?text=3';" />
+              <img src="images/novedades/Kaguya_sama_arg_01.jpg" class="rounded-3 shadow mb-1" style="width: 52px; height: 68px; object-fit: cover;" onerror="this.onerror=null; this.src='https://via.placeholder.com/52x68';" />
             </button>
             <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="3" class="btn p-1 text-center border-0 bg-transparent nav-thumb">
-              <img src="images/carrusel/Oshi_no_ko_arg_01.jpg" class="rounded-3 shadow mb-1" style="width: 52px; height: 68px; object-fit: cover;" onerror="this.onerror=null; this.src='https://via.placeholder.com/52x68?text=4';" />
+              <img src="images/carrusel/Oshi_no_ko_arg_01.jpg" class="rounded-3 shadow mb-1" style="width: 52px; height: 68px; object-fit: cover;" onerror="this.onerror=null; this.src='https://via.placeholder.com/52x68';" />
             </button>
           </div>
 
@@ -199,7 +201,7 @@
     <section class="mb-5">
       <div class="d-flex justify-content-between align-items-center mb-4">
         <h3 class="fw-bold text-white m-0 fs-4"><i class="fa-solid fa-wand-magic-sparkles text-accent me-2" style="color: #d178ff;"></i>Novedades</h3>
-        <a href="catalogo/catalogo.html" class="text-decoration-none small fw-bold" style="color: #d178ff;">Ver todo <i class="fa-solid fa-chevron-right ms-1"></i></a>
+        <a href="./catalogo/catalogo.html" class="text-decoration-none small fw-bold" style="color: #d178ff;">Ver todo <i class="fa-solid fa-chevron-right ms-1"></i></a>
       </div>
       <div id="novedades-grid" class="row row-cols-2 row-cols-md-3 row-cols-lg-6 g-3"></div>
     </section>
@@ -208,7 +210,7 @@
     <section class="mb-5">
       <div class="d-flex justify-content-between align-items-center mb-4">
         <h3 class="fw-bold text-white m-0 fs-4"><i class="fa-solid fa-chart-line text-accent me-2" style="color: #d178ff;"></i>Más populares</h3>
-        <a href="catalogo/catalogo.html" class="text-decoration-none small fw-bold" style="color: #d178ff;">Ver todo <i class="fa-solid fa-chevron-right ms-1"></i></a>
+        <a href="./catalogo/catalogo.html" class="text-decoration-none small fw-bold" style="color: #d178ff;">Ver todo <i class="fa-solid fa-chevron-right ms-1"></i></a>
       </div>
       <div id="populares-grid" class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-4"></div>
     </section>
@@ -217,15 +219,15 @@
     <section id="editoriales" class="mb-5">
       <div class="d-flex justify-content-between align-items-center mb-4">
         <h3 class="fw-bold text-white m-0 fs-4"><i class="fa-regular fa-star text-accent me-2" style="color: #d178ff;"></i>Editoriales</h3>
-        <a href="editoriales/editoriales.html" class="text-decoration-none small fw-bold" style="color: #d178ff;">Ver todas <i class="fa-solid fa-chevron-right ms-1"></i></a>
+        <a href="./editoriales/editoriales.html" class="text-decoration-none small fw-bold" style="color: #d178ff;">Ver todas <i class="fa-solid fa-chevron-right ms-1"></i></a>
       </div>
       
       <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-3">
         <div class="col">
-          <div class="card-panel p-3 h-100 d-flex flex-column justify-content-between">
+          <div class="card-panel p-3 h-100 d-flex flex-column justify-content-between" style="background-color: #12131f; border-radius: 12px;">
             <div>
               <div class="d-flex align-items-center gap-3 mb-3">
-                <img src="images/editoriales/ivrea_argentina.png" alt="Ivrea" class="rounded" style="width: 48px; height: 48px; object-fit: contain; background: #fff; padding: 4px;" onerror="this.onerror=null; this.src='https://via.placeholder.com/48?text=Ivrea';" />
+                <img src="images/editoriales/ivrea_argentina.png" alt="Ivrea" class="rounded" style="width: 48px; height: 48px; object-fit: contain; background: #fff; padding: 4px;" onerror="this.onerror=null; this.src='https://via.placeholder.com/48';" />
                 <div>
                   <h6 class="text-white fw-bold mb-0">Ivrea Argentina</h6>
                   <span class="text-secondary small">Argentina</span>
@@ -233,15 +235,15 @@
               </div>
               <p class="text-secondary small mb-3">Una de las editoriales más importantes de manga en Latinoamérica.</p>
             </div>
-            <a href="editoriales/editoriales.html" class="text-decoration-none small fw-bold" style="color: #d178ff;">7 obras disponibles &rarr;</a>
+            <a href="./editoriales/editoriales.html" class="text-decoration-none small fw-bold" style="color: #d178ff;">7 obras disponibles &rarr;</a>
           </div>
         </div>
 
         <div class="col">
-          <div class="card-panel p-3 h-100 d-flex flex-column justify-content-between">
+          <div class="card-panel p-3 h-100 d-flex flex-column justify-content-between" style="background-color: #12131f; border-radius: 12px;">
             <div>
               <div class="d-flex align-items-center gap-3 mb-3">
-                <img src="images/editoriales/panini_manga.jpg" alt="Panini" class="rounded" style="width: 48px; height: 48px; object-fit: contain; background: #fff; padding: 4px;" onerror="this.onerror=null; this.src='https://via.placeholder.com/48?text=Panini';" />
+                <img src="images/editoriales/panini_manga.jpg" alt="Panini" class="rounded" style="width: 48px; height: 48px; object-fit: contain; background: #fff; padding: 4px;" onerror="this.onerror=null; this.src='https://via.placeholder.com/48';" />
                 <div>
                   <h6 class="text-white fw-bold mb-0">Panini Manga</h6>
                   <span class="text-secondary small">México/España</span>
@@ -249,15 +251,15 @@
               </div>
               <p class="text-secondary small mb-3">Editorial multinacional con fuerte presencia en Latinoamérica.</p>
             </div>
-            <a href="editoriales/editoriales.html" class="text-decoration-none small fw-bold" style="color: #d178ff;">6 obras disponibles &rarr;</a>
+            <a href="./editoriales/editoriales.html" class="text-decoration-none small fw-bold" style="color: #d178ff;">6 obras disponibles &rarr;</a>
           </div>
         </div>
 
         <div class="col">
-          <div class="card-panel p-3 h-100 d-flex flex-column justify-content-between">
+          <div class="card-panel p-3 h-100 d-flex flex-column justify-content-between" style="background-color: #12131f; border-radius: 12px;">
             <div>
               <div class="d-flex align-items-center gap-3 mb-3">
-                <img src="images/editoriales/norma_editorial.png" alt="Norma" class="rounded" style="width: 48px; height: 48px; object-fit: contain; background: #fff; padding: 4px;" onerror="this.onerror=null; this.src='https://via.placeholder.com/48?text=Norma';" />
+                <img src="images/editoriales/norma_editorial.png" alt="Norma" class="rounded" style="width: 48px; height: 48px; object-fit: contain; background: #fff; padding: 4px;" onerror="this.onerror=null; this.src='https://via.placeholder.com/48';" />
                 <div>
                   <h6 class="text-white fw-bold mb-0">Norma Editorial</h6>
                   <span class="text-secondary small">España</span>
@@ -265,15 +267,15 @@
               </div>
               <p class="text-secondary small mb-3">Editorial española con larga trayectoria en el manga.</p>
             </div>
-            <a href="editoriales/editoriales.html" class="text-decoration-none small fw-bold" style="color: #d178ff;">3 obras disponibles &rarr;</a>
+            <a href="./editoriales/editoriales.html" class="text-decoration-none small fw-bold" style="color: #d178ff;">3 obras disponibles &rarr;</a>
           </div>
         </div>
 
         <div class="col">
-          <div class="card-panel p-3 h-100 d-flex flex-column justify-content-between">
+          <div class="card-panel p-3 h-100 d-flex flex-column justify-content-between" style="background-color: #12131f; border-radius: 12px;">
             <div>
               <div class="d-flex align-items-center gap-3 mb-3">
-                <img src="images/editoriales/planeta_comics.png" alt="Planeta" class="rounded" style="width: 48px; height: 48px; object-fit: contain; background: #fff; padding: 4px;" onerror="this.onerror=null; this.src='https://via.placeholder.com/48?text=Planeta';" />
+                <img src="images/editoriales/planeta_comics.png" alt="Planeta" class="rounded" style="width: 48px; height: 48px; object-fit: contain; background: #fff; padding: 4px;" onerror="this.onerror=null; this.src='https://via.placeholder.com/48';" />
                 <div>
                   <h6 class="text-white fw-bold mb-0">Planeta Comics</h6>
                   <span class="text-secondary small">España</span>
@@ -281,7 +283,7 @@
               </div>
               <p class="text-secondary small mb-3">Sello editorial especializado en cómics y manga.</p>
             </div>
-            <a href="editoriales/editoriales.html" class="text-decoration-none small fw-bold" style="color: #d178ff;">1 obras disponibles &rarr;</a>
+            <a href="./editoriales/editoriales.html" class="text-decoration-none small fw-bold" style="color: #d178ff;">1 obras disponibles &rarr;</a>
           </div>
         </div>
       </div>
@@ -294,7 +296,7 @@
     <div class="container">
       <div class="row g-4">
         <div class="col-12 col-md-4">
-          <a class="brand-logo d-flex align-items-center gap-2 text-decoration-none mb-3" href="index.html">
+          <a class="brand-logo d-flex align-items-center gap-2 text-decoration-none mb-3" href="./index.html">
             <span class="fs-3 fw-bold text-white">Manga<span style="color: #d178ff;">Flow</span></span>
           </a>
           <p class="text-secondary small pe-md-4">La plataforma especializada en manga físico y digital para toda Latinoamérica.</p>
@@ -303,25 +305,25 @@
         <div class="col-6 col-md-2">
           <h6 class="fw-bold text-white mb-3">Explorar</h6>
           <ul class="list-unstyled text-secondary small d-flex flex-column gap-2 mb-0">
-            <li><a href="catalogo/catalogo.html" class="text-secondary text-decoration-none hover-white">Catálogo</a></li>
+            <li><a href="./catalogo/catalogo.html" class="text-secondary text-decoration-none hover-white">Catálogo</a></li>
             <li><a href="#novedades-grid" class="text-secondary text-decoration-none hover-white">Novedades</a></li>
-            <li><a href="editoriales/editoriales.html" class="text-secondary text-decoration-none hover-white">Editoriales</a></li>
+            <li><a href="./editoriales/editoriales.html" class="text-secondary text-decoration-none hover-white">Editoriales</a></li>
           </ul>
         </div>
 
         <div class="col-6 col-md-3">
           <h6 class="fw-bold text-white mb-3">Mi cuenta</h6>
           <ul class="list-unstyled text-secondary small d-flex flex-column gap-2 mb-0">
-            <li><a href="biblioteca/biblioteca.html" class="text-secondary text-decoration-none hover-white">Mi Biblioteca</a></li>
-            <li><a href="puntos/puntos.html" class="text-secondary text-decoration-none hover-white">Puntos y Recompensas</a></li>
+            <li><a href="./biblioteca/biblioteca.html" class="text-secondary text-decoration-none hover-white">Mi Biblioteca</a></li>
+            <li><a href="./puntos/puntos.html" class="text-secondary text-decoration-none hover-white">Puntos y Recompensas</a></li>
           </ul>
         </div>
 
         <div class="col-12 col-md-3">
           <h6 class="fw-bold text-white mb-3">Ayuda</h6>
           <ul class="list-unstyled text-secondary small d-flex flex-column gap-2 mb-0">
-            <li><a href="#" class="text-secondary text-decoration-none hover-white">Preguntas frecuentes</a></li>
-            <li><a href="#" class="text-secondary text-decoration-none hover-white">Contacto</a></li>
+            <li><a href="./proximamente.html" class="text-secondary text-decoration-none hover-white">Preguntas frecuentes</a></li>
+            <li><a href="./proximamente.html" class="text-secondary text-decoration-none hover-white">Contacto</a></li>
           </ul>
         </div>
       </div>

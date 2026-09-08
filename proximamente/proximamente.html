@@ -13,7 +13,7 @@
   <!-- Header Superior -->
   <header class="text-center py-4 border-bottom border-secondary border-opacity-10" style="background-color: #0b0b12;">
     <div class="container">
-      <a href="../index.html" class="text-decoration-none d-inline-block">
+      <a href="../index.html" class="text-decoration-none">
         <div class="d-flex justify-content-center align-items-center mb-2">
           <div class="rounded-circle p-3 d-inline-flex align-items-center justify-content-center" style="background: linear-gradient(135deg, #a100ff, #e100ff); width: 64px; height: 64px;">
             <img src="../images/logo/logoMangaFlow.png" alt="MangaFlow Logo" class="rounded-circle" style="width: 48px; height: 48px; object-fit: cover;" onerror="this.outerHTML='<i class=\'fa-solid fa-book-open text-white fs-3\'></i>';" />
@@ -41,70 +41,193 @@
           <li class="nav-item"><a class="nav-link px-3 text-white fw-semibold" href="../editoriales/editoriales.html">Editoriales</a></li>
           <li class="nav-item"><a class="nav-link px-3 text-white fw-semibold" href="../biblioteca/biblioteca.html">Mi Biblioteca</a></li>
           <li class="nav-item position-relative">
-            <a class="nav-link active px-3 py-1 rounded-3" style="background-color: #3b1754; color: #d178ff !important;" href="proximamente.html">Próximamente
+            <a class="nav-link active px-3 py-1 rounded-3" style="background-color: #3b1754; color: #d178ff !important;" href="./proximamente.html">Próximamente
               <span class="badge position-absolute top-0 start-100 translate-middle rounded-pill" style="font-size: 0.55rem; background-color: #a100ff;">NEW</span>
             </a>
           </li>
-          <li class="nav-item"><a class="nav-link px-3 text-white fw-semibold" href="../cuenta/cuenta.html">Mi cuenta</a></li>
+          <li class="nav-item"><a class="nav-link px-3 text-white fw-semibold" href="../login.html">Mi cuenta</a></li>
         </ul>
 
         <div class="d-flex align-items-center gap-2 mt-3 mt-lg-0">
           <span id="user-badge" class="badge px-3 py-2 rounded-3" style="background-color: #231238; color: #d178ff; border: 1px solid #3b1754;">Invitado</span>
           <a id="user-action-btn" href="../login.html" class="btn btn-dark border-0 p-2 text-secondary" style="background-color: #12131f;"><i class="fa-solid fa-right-to-bracket"></i></a>
+          <a href="../carrito.html" class="btn btn-dark border-0 p-2 text-white position-relative" style="background-color: #12131f;">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <span id="cart-count" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="font-size: 0.6rem;">0</span>
+          </a>
         </div>
       </div>
     </div>
   </nav>
 
-  <!-- Sección Próximamente -->
-  <main class="container my-5">
-    <div class="text-center py-5">
-      <div class="d-inline-block p-4 rounded-circle mb-3" style="background-color: #1c102b;">
-        <i class="fa-solid fa-rocket fs-1" style="color: #d178ff;"></i>
+  <!-- Contenido Principal -->
+  <main class="container py-5" style="max-width: 900px;">
+
+    <!-- Encabezado -->
+    <div class="text-center mb-5">
+      <div class="d-inline-flex align-items-center gap-2 px-3 py-1.5 rounded-pill mb-3" style="background-color: rgba(192, 38, 211, 0.1); border: 1px solid rgba(192, 38, 211, 0.2); color: #c026d3; font-size: 0.8rem; font-weight: 600;">
+        <i class="fa-regular fa-clock"></i> Próximamente
       </div>
-      <h1 class="text-white fw-bold mb-2">Lanzamientos Próximos</h1>
-      <p class="text-secondary max-w-lg mx-auto mb-5" style="max-width: 500px;">
-        Prepárate para los próximos tomos físicos y licencias que llegarán muy pronto a MangaFlow.
+      <h1 class="text-white fw-bold mb-3">Lo que viene en MangaFlow</h1>
+      <p class="text-secondary small max-w-lg mx-auto" style="max-width: 500px;">
+        Estamos trabajando en nuevas funciones para la comunidad. Vota por los manga que quieres ver en la tienda o envía tu propia petición.
       </p>
+    </div>
 
-      <div class="row row-cols-1 row-cols-md-3 g-4 text-start">
-        <div class="col">
-          <div class="card-panel p-3 h-100 d-flex flex-column justify-content-between">
-            <div>
-              <span class="badge bg-purple text-white mb-2">Preventa Próxima</span>
-              <h5 class="text-white fw-bold mb-1">Chainsaw Man - Vol. 15</h5>
-              <p class="text-secondary small mb-3">Lanzamiento programado para la próxima temporada.</p>
+    <!-- Funciones en desarrollo -->
+    <section class="mb-5">
+      <h2 class="text-white font-semibold fs-5 mb-4">Funciones en desarrollo</h2>
+      <div class="row g-3">
+        
+        <div class="col-12 col-md-4">
+          <div class="p-4 rounded-4 h-100 d-flex flex-column gap-3" style="background-color: #12131f; border: 1px solid rgba(255, 255, 255, 0.05);">
+            <div class="rounded-3 d-flex align-items-center justify-content-center" style="width: 38px; height: 38px; background-color: rgba(192, 38, 211, 0.1); color: #c026d3;">
+              <i class="fa-solid fa-users"></i>
             </div>
-            <button class="btn btn-outline-light btn-sm w-100 disabled">Reservar pronto</button>
+            <div>
+              <p class="text-white fw-semibold small mb-1">Función de comunidad</p>
+              <p class="text-secondary extra-small leading-relaxed mb-0">Foros, reseñas de usuarios, listas compartidas y rankings comunitarios de los mejores manga.</p>
+            </div>
+            <span class="mt-auto align-self-start text-secondary bg-white-5 px-2 py-0.5 rounded-pill fw-semibold" style="font-size: 0.65rem; background-color: rgba(255, 255, 255, 0.05);">
+              Q3 2026
+            </span>
           </div>
         </div>
 
-        <div class="col">
-          <div class="card-panel p-3 h-100 d-flex flex-column justify-content-between">
-            <div>
-              <span class="badge bg-info text-dark mb-2">Edición Especial</span>
-              <h5 class="text-white fw-bold mb-1">Berserk Deluxe Vol. 14</h5>
-              <p class="text-secondary small mb-3">Edición tapa dura de gran formato.</p>
+        <div class="col-12 col-md-4">
+          <div class="p-4 rounded-4 h-100 d-flex flex-column gap-3" style="background-color: #12131f; border: 1px solid rgba(255, 255, 255, 0.05);">
+            <div class="rounded-3 d-flex align-items-center justify-content-center" style="width: 38px; height: 38px; background-color: rgba(192, 38, 211, 0.1); color: #c026d3;">
+              <i class="fa-solid fa-book-bookmark"></i>
             </div>
-            <button class="btn btn-outline-light btn-sm w-100 disabled">Reservar pronto</button>
+            <div>
+              <p class="text-white fw-semibold small mb-1">Clubs de lectura</p>
+              <p class="text-secondary extra-small leading-relaxed mb-0">Únete a grupos que leen el mismo manga al mismo tiempo y comparte tus impresiones capítulo a capítulo.</p>
+            </div>
+            <span class="mt-auto align-self-start text-secondary bg-white-5 px-2 py-0.5 rounded-pill fw-semibold" style="font-size: 0.65rem; background-color: rgba(255, 255, 255, 0.05);">
+              Q4 2026
+            </span>
           </div>
         </div>
 
-        <div class="col">
-          <div class="card-panel p-3 h-100 d-flex flex-column justify-content-between">
-            <div>
-              <span class="badge bg-warning text-dark mb-2">Nueva Licencia</span>
-              <h5 class="text-white fw-bold mb-1">Kagurabachi - Vol. 1</h5>
-              <p class="text-secondary small mb-3">Llegada oficial en formato físico.</p>
+        <div class="col-12 col-md-4">
+          <div class="p-4 rounded-4 h-100 d-flex flex-column gap-3" style="background-color: #12131f; border: 1px solid rgba(255, 255, 255, 0.05);">
+            <div class="rounded-3 d-flex align-items-center justify-content-center" style="width: 38px; height: 38px; background-color: rgba(192, 38, 211, 0.1); color: #c026d3;">
+              <i class="fa-solid fa-wand-magic-sparkles"></i>
             </div>
-            <button class="btn btn-outline-light btn-sm w-100 disabled">Reservar pronto</button>
+            <div>
+              <p class="text-white fw-semibold small mb-1">Recomendaciones IA</p>
+              <p class="text-secondary extra-small leading-relaxed mb-0">Sistema inteligente que aprende tus gustos y te sugiere el próximo manga que amarás leer.</p>
+            </div>
+            <span class="mt-auto align-self-start text-secondary bg-white-5 px-2 py-0.5 rounded-pill fw-semibold" style="font-size: 0.65rem; background-color: rgba(255, 255, 255, 0.05);">
+              2027
+            </span>
           </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Peticiones de Manga -->
+    <section>
+      <div class="d-flex align-items-center justify-content-between mb-4">
+        <h2 class="text-white fw-semibold fs-5 m-0">Peticiones de manga</h2>
+        <span id="peticiones-count" class="text-secondary small">3 peticiones</span>
+      </div>
+
+      <!-- Lista dinámica de peticiones -->
+      <div id="peticiones-list" class="d-flex flex-column gap-3 mb-5"></div>
+
+      <!-- Formulario para agregar petición -->
+      <div class="p-4 rounded-4" style="background-color: #12131f; border: 1px solid rgba(255, 255, 255, 0.05);">
+        <h3 class="text-white fw-semibold fs-6 mb-1">¿Falta tu manga favorito?</h3>
+        <p class="text-secondary small mb-4">Envíanos tu petición y la comunidad puede votarla.</p>
+
+        <!-- Mensaje de éxito -->
+        <div id="alert-exito" class="alert alert-success bg-opacity-10 border-success text-success small d-none align-items-center gap-2 mb-4" role="alert">
+          <i class="fa-solid fa-circle-check"></i> ¡Petición enviada! Gracias por participar.
+        </div>
+
+        <form id="form-peticion" class="d-flex flex-column gap-3">
+          <div>
+            <label for="titulo" class="text-light small fw-medium block mb-2">
+              Nombre del manga <span style="color: #c026d3;">*</span>
+            </label>
+            <input
+              type="text"
+              id="titulo"
+              placeholder="Ej: Chainsaw Man"
+              class="form-control text-white border-0 px-3 py-2.5 rounded-3"
+              style="background-color: #0d0e1a; font-size: 0.9rem;"
+            />
+            <p id="error-titulo" class="text-danger extra-small mt-1 d-none"></p>
+          </div>
+
+          <div>
+            <label for="descripcion" class="text-light small fw-medium block mb-2">
+              Descripción <span class="text-secondary fw-normal">(opcional)</span>
+            </label>
+            <textarea
+              id="descripcion"
+              rows="3"
+              placeholder="Cuéntanos de qué trata y por qué debería estar en MangaFlow..."
+              class="form-control text-white border-0 px-3 py-2.5 rounded-3"
+              style="background-color: #0d0e1a; font-size: 0.9rem; resize: none;"
+            ></textarea>
+          </div>
+
+          <button
+            type="submit"
+            class="btn text-white fw-semibold px-4 py-2 rounded-3 align-self-start d-flex align-items-center gap-2"
+            style="background-color: #c026d3; border: none; font-size: 0.9rem;"
+          >
+            <i class="fa-solid fa-paper-plane"></i> Enviar petición
+          </button>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer-custom border-top border-secondary border-opacity-10 mt-5 pt-5 pb-4" style="background-color: #0b0c10;">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-12 col-md-4">
+          <a class="brand-logo d-flex align-items-center gap-2 text-decoration-none mb-3" href="../index.html">
+            <span class="fs-3 fw-bold text-white">Manga<span style="color: #d178ff;">Flow</span></span>
+          </a>
+          <p class="text-secondary small pe-md-4">La plataforma especializada en manga físico y digital para toda Latinoamérica.</p>
+        </div>
+
+        <div class="col-6 col-md-2">
+          <h6 class="fw-bold text-white mb-3">Explorar</h6>
+          <ul class="list-unstyled text-secondary small d-flex flex-column gap-2 mb-0">
+            <li><a href="../catalogo/catalogo.html" class="text-secondary text-decoration-none">Catálogo</a></li>
+            <li><a href="../editoriales/editoriales.html" class="text-secondary text-decoration-none">Editoriales</a></li>
+          </ul>
+        </div>
+
+        <div class="col-6 col-md-3">
+          <h6 class="fw-bold text-white mb-3">Mi cuenta</h6>
+          <ul class="list-unstyled text-secondary small d-flex flex-column gap-2 mb-0">
+            <li><a href="../biblioteca/biblioteca.html" class="text-secondary text-decoration-none">Mi Biblioteca</a></li>
+            <li><a href="../puntos/puntos.html" class="text-secondary text-decoration-none">Puntos y Recompensas</a></li>
+          </ul>
+        </div>
+
+        <div class="col-12 col-md-3">
+          <h6 class="fw-bold text-white mb-3">Ayuda</h6>
+          <ul class="list-unstyled text-secondary small d-flex flex-column gap-2 mb-0">
+            <li><a href="#" class="text-secondary text-decoration-none">Preguntas frecuentes</a></li>
+            <li><a href="#" class="text-secondary text-decoration-none">Contacto</a></li>
+          </ul>
         </div>
       </div>
     </div>
-  </main>
+  </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="../main.js"></script>
+  <script src="proximamente.js"></script>
 </body>
 </html>
