@@ -155,11 +155,20 @@ function isSubfolder() {
          window.location.pathname.includes("/puntos/") || 
          window.location.pathname.includes("/editoriales/") || 
          window.location.pathname.includes("/biblioteca/") ||
-         window.location.pathname.includes("/cuenta/");
+         window.location.pathname.includes("/cuenta/") ||
+         window.location.pathname.includes("/proximamente/");
 }
 
 // Agregar producto al carrito por ID
 function agregarAlCarrito(productId) {
+  const sessionData = JSON.parse(localStorage.getItem("mangaFlow_session")) || JSON.parse(localStorage.getItem("activeUser")) || JSON.parse(localStorage.getItem("usuarioLogueado"));
+
+  // Bloquear acción si es invitado
+  if (!sessionData || sessionData.isGuest) {
+    alert("El usuario invitado no tiene acceso al carrito de compras. Por favor, inicia sesión para continuar.");
+    return;
+  }
+
   const todosLosProductos = [...novedades, ...populares];
   const producto = todosLosProductos.find(p => p.id === productId);
 
@@ -180,12 +189,20 @@ function agregarAlCarrito(productId) {
 
 // Actualizar el número mostrado en la insignia del carrito
 function actualizarContadorCarrito() {
-  const cart = JSON.parse(localStorage.getItem("cart")) || [];
   const cartCountEl = document.getElementById("cart-count");
-  if (cartCountEl) {
-    const totalItems = cart.reduce((acc, item) => acc + (item.quantity || 1), 0);
-    cartCountEl.textContent = totalItems;
+  if (!cartCountEl) return;
+
+  const sessionData = JSON.parse(localStorage.getItem("mangaFlow_session")) || JSON.parse(localStorage.getItem("activeUser")) || JSON.parse(localStorage.getItem("usuarioLogueado"));
+  
+  // Si no hay sesión o es invitado, forzar a cero visualmente
+  if (!sessionData || sessionData.isGuest) {
+    cartCountEl.textContent = "0";
+    return;
   }
+
+  const cart = JSON.parse(localStorage.getItem("cart")) || JSON.parse(localStorage.getItem("mangaFlow_cart")) || [];
+  const totalItems = cart.reduce((acc, item) => acc + (item.quantity || 1), 0);
+  cartCountEl.textContent = totalItems;
 }
 
 // Cerrar sesión limpiando todas las claves de usuario

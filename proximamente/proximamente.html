@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
   <link rel="stylesheet" href="../styles.css" />
 </head>
-<body>
+<body style="background-color: #0b0b12; color: #ffffff;">
 
   <!-- Header Superior -->
   <header class="text-center py-4 border-bottom border-secondary border-opacity-10" style="background-color: #0b0b12;">
@@ -61,131 +61,142 @@
   </nav>
 
   <!-- Contenido Principal -->
-  <main class="container py-5" style="max-width: 900px;">
-
-    <!-- Encabezado -->
+  <main class="container my-5">
+    
+    <!-- Header de Sección -->
     <div class="text-center mb-5">
-      <div class="d-inline-flex align-items-center gap-2 px-3 py-1.5 rounded-pill mb-3" style="background-color: rgba(192, 38, 211, 0.1); border: 1px solid rgba(192, 38, 211, 0.2); color: #c026d3; font-size: 0.8rem; font-weight: 600;">
-        <i class="fa-regular fa-clock"></i> Próximamente
-      </div>
-      <h1 class="text-white fw-bold mb-3">Lo que viene en MangaFlow</h1>
-      <p class="text-secondary small max-w-lg mx-auto" style="max-width: 500px;">
-        Estamos trabajando en nuevas funciones para la comunidad. Vota por los manga que quieres ver en la tienda o envía tu propia petición.
+      <span class="badge px-3 py-2 rounded-pill fw-bold text-uppercase mb-3" style="background-color: #231238; color: #d178ff; border: 1px solid #3b1754; letter-spacing: 1px;">
+        HOJA DE RUTA & UPGRADES
+      </span>
+      <p class="text-secondary mx-auto" style="max-width: 650px;">
+        Estamos trabajando para llevar la experiencia de MangaFlow al siguiente nivel. Revisa las características que se integrarán próximamente a la plataforma.
       </p>
     </div>
 
-    <!-- Funciones en desarrollo -->
-    <section class="mb-5">
-      <h2 class="text-white font-semibold fs-5 mb-4">Funciones en desarrollo</h2>
-      <div class="row g-3">
-        
-        <div class="col-12 col-md-4">
-          <div class="p-4 rounded-4 h-100 d-flex flex-column gap-3" style="background-color: #12131f; border: 1px solid rgba(255, 255, 255, 0.05);">
-            <div class="rounded-3 d-flex align-items-center justify-content-center" style="width: 38px; height: 38px; background-color: rgba(192, 38, 211, 0.1); color: #c026d3;">
-              <i class="fa-solid fa-users"></i>
+    <!-- Grid de Novedades -->
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+      
+      <!-- Card 1 -->
+      <div class="col">
+        <div class="card h-100 border-0 p-4" style="background-color: #12131c; border-radius: 16px; border: 1px solid rgba(255, 255, 255, 0.05);">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <div class="p-3 rounded-3" style="background-color: #231238; color: #d178ff;">
+              <i class="fa-solid fa-robot fs-4"></i>
             </div>
-            <div>
-              <p class="text-white fw-semibold small mb-1">Función de comunidad</p>
-              <p class="text-secondary extra-small leading-relaxed mb-0">Foros, reseñas de usuarios, listas compartidas y rankings comunitarios de los mejores manga.</p>
-            </div>
-            <span class="mt-auto align-self-start text-secondary bg-white-5 px-2 py-0.5 rounded-pill fw-semibold" style="font-size: 0.65rem; background-color: rgba(255, 255, 255, 0.05);">
-              Q3 2026
-            </span>
+            <span class="badge px-2 py-1 rounded-3" style="background-color: #1a1b28; color: #d178ff; border: 1px solid #3b1754;">v1.2 IA</span>
+          </div>
+          <h4 class="fw-bold text-white mb-2">Asistente IA "P-ko"</h4>
+          <p class="text-secondary small mb-4">
+            Un asistente inteligente capacitado para dar recomendaciones personalizadas, guiarte en el orden de lectura correcto de sagas complejas y comparar ediciones de tomos.
+          </p>
+          <div class="mt-auto d-flex justify-content-between align-items-center text-secondary small pt-3 border-top border-secondary border-opacity-10">
+            <span>Estado: En desarrollo</span>
+            <i class="fa-regular fa-clock"></i>
           </div>
         </div>
-
-        <div class="col-12 col-md-4">
-          <div class="p-4 rounded-4 h-100 d-flex flex-column gap-3" style="background-color: #12131f; border: 1px solid rgba(255, 255, 255, 0.05);">
-            <div class="rounded-3 d-flex align-items-center justify-content-center" style="width: 38px; height: 38px; background-color: rgba(192, 38, 211, 0.1); color: #c026d3;">
-              <i class="fa-solid fa-book-bookmark"></i>
-            </div>
-            <div>
-              <p class="text-white fw-semibold small mb-1">Clubs de lectura</p>
-              <p class="text-secondary extra-small leading-relaxed mb-0">Únete a grupos que leen el mismo manga al mismo tiempo y comparte tus impresiones capítulo a capítulo.</p>
-            </div>
-            <span class="mt-auto align-self-start text-secondary bg-white-5 px-2 py-0.5 rounded-pill fw-semibold" style="font-size: 0.65rem; background-color: rgba(255, 255, 255, 0.05);">
-              Q4 2026
-            </span>
-          </div>
-        </div>
-
-        <div class="col-12 col-md-4">
-          <div class="p-4 rounded-4 h-100 d-flex flex-column gap-3" style="background-color: #12131f; border: 1px solid rgba(255, 255, 255, 0.05);">
-            <div class="rounded-3 d-flex align-items-center justify-content-center" style="width: 38px; height: 38px; background-color: rgba(192, 38, 211, 0.1); color: #c026d3;">
-              <i class="fa-solid fa-wand-magic-sparkles"></i>
-            </div>
-            <div>
-              <p class="text-white fw-semibold small mb-1">Recomendaciones IA</p>
-              <p class="text-secondary extra-small leading-relaxed mb-0">Sistema inteligente que aprende tus gustos y te sugiere el próximo manga que amarás leer.</p>
-            </div>
-            <span class="mt-auto align-self-start text-secondary bg-white-5 px-2 py-0.5 rounded-pill fw-semibold" style="font-size: 0.65rem; background-color: rgba(255, 255, 255, 0.05);">
-              2027
-            </span>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- Peticiones de Manga -->
-    <section>
-      <div class="d-flex align-items-center justify-content-between mb-4">
-        <h2 class="text-white fw-semibold fs-5 m-0">Peticiones de manga</h2>
-        <span id="peticiones-count" class="text-secondary small">3 peticiones</span>
       </div>
 
-      <!-- Lista dinámica de peticiones -->
-      <div id="peticiones-list" class="d-flex flex-column gap-3 mb-5"></div>
-
-      <!-- Formulario para agregar petición -->
-      <div class="p-4 rounded-4" style="background-color: #12131f; border: 1px solid rgba(255, 255, 255, 0.05);">
-        <h3 class="text-white fw-semibold fs-6 mb-1">¿Falta tu manga favorito?</h3>
-        <p class="text-secondary small mb-4">Envíanos tu petición y la comunidad puede votarla.</p>
-
-        <!-- Mensaje de éxito -->
-        <div id="alert-exito" class="alert alert-success bg-opacity-10 border-success text-success small d-none align-items-center gap-2 mb-4" role="alert">
-          <i class="fa-solid fa-circle-check"></i> ¡Petición enviada! Gracias por participar.
+      <!-- Card 2 -->
+      <div class="col">
+        <div class="card h-100 border-0 p-4" style="background-color: #12131c; border-radius: 16px; border: 1px solid rgba(255, 255, 255, 0.05);">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <div class="p-3 rounded-3" style="background-color: #231238; color: #d178ff;">
+              <i class="fa-solid fa-heart fs-4"></i>
+            </div>
+            <span class="badge px-2 py-1 rounded-3" style="background-color: #1a1b28; color: #d178ff; border: 1px solid #3b1754;">v1.1 Kaguya</span>
+          </div>
+          <h4 class="fw-bold text-white mb-2">Lista de Deseos Inteligente</h4>
+          <p class="text-secondary small mb-4">
+            Guarda tus tomos pendientes, recibe alertas automáticas de reposición de stock, notificaciones de preventas y calcula cuánto te falta para completar tu colección.
+          </p>
+          <div class="mt-auto d-flex justify-content-between align-items-center text-secondary small pt-3 border-top border-secondary border-opacity-10">
+            <span>Estado: Diseño funcional</span>
+            <i class="fa-solid fa-spinner"></i>
+          </div>
         </div>
-
-        <form id="form-peticion" class="d-flex flex-column gap-3">
-          <div>
-            <label for="titulo" class="text-light small fw-medium block mb-2">
-              Nombre del manga <span style="color: #c026d3;">*</span>
-            </label>
-            <input
-              type="text"
-              id="titulo"
-              placeholder="Ej: Chainsaw Man"
-              class="form-control text-white border-0 px-3 py-2.5 rounded-3"
-              style="background-color: #0d0e1a; font-size: 0.9rem;"
-            />
-            <p id="error-titulo" class="text-danger extra-small mt-1 d-none"></p>
-          </div>
-
-          <div>
-            <label for="descripcion" class="text-light small fw-medium block mb-2">
-              Descripción <span class="text-secondary fw-normal">(opcional)</span>
-            </label>
-            <textarea
-              id="descripcion"
-              rows="3"
-              placeholder="Cuéntanos de qué trata y por qué debería estar en MangaFlow..."
-              class="form-control text-white border-0 px-3 py-2.5 rounded-3"
-              style="background-color: #0d0e1a; font-size: 0.9rem; resize: none;"
-            ></textarea>
-          </div>
-
-          <button
-            type="submit"
-            class="btn text-white fw-semibold px-4 py-2 rounded-3 align-self-start d-flex align-items-center gap-2"
-            style="background-color: #c026d3; border: none; font-size: 0.9rem;"
-          >
-            <i class="fa-solid fa-paper-plane"></i> Enviar petición
-          </button>
-        </form>
       </div>
-    </section>
 
+      <!-- Card 3 -->
+      <div class="col">
+        <div class="card h-100 border-0 p-4" style="background-color: #12131c; border-radius: 16px; border: 1px solid rgba(255, 255, 255, 0.05);">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <div class="p-3 rounded-3" style="background-color: #231238; color: #d178ff;">
+              <i class="fa-solid fa-trophy fs-4"></i>
+            </div>
+            <span class="badge px-2 py-1 rounded-3" style="background-color: #1a1b28; color: #d178ff; border: 1px solid #3b1754;">v1.4 Logros</span>
+          </div>
+          <h4 class="fw-bold text-white mb-2">Sistema de Logros e Insignias</h4>
+          <p class="text-secondary small mb-4">
+            Desbloquea logros estilo plataforma de videojuegos al completar colecciones de mangas, realizar lecturas continuas o participar en intercambios de tomos usados.
+          </p>
+          <div class="mt-auto d-flex justify-content-between align-items-center text-secondary small pt-3 border-top border-secondary border-opacity-10">
+            <span>Estado: Planificado</span>
+            <i class="fa-regular fa-calendar"></i>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="col">
+        <div class="card h-100 border-0 p-4" style="background-color: #12131c; border-radius: 16px; border: 1px solid rgba(255, 255, 255, 0.05);">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <div class="p-3 rounded-3" style="background-color: #231238; color: #d178ff;">
+              <i class="fa-solid fa-users-gear fs-4"></i>
+            </div>
+            <span class="badge px-2 py-1 rounded-3" style="background-color: #1a1b28; color: #d178ff; border: 1px solid #3b1754;">v2.0 Comunidad</span>
+          </div>
+          <h4 class="fw-bold text-white mb-2">Marketplace & Comunidad</h4>
+          <p class="text-secondary small mb-4">
+            Publica reseñas, califica obras, sigue a otros coleccionistas e intercambia o compra mangas usados directamente entre usuarios bajo nuestro sistema de certificación.
+          </p>
+          <div class="mt-auto d-flex justify-content-between align-items-center text-secondary small pt-3 border-top border-secondary border-opacity-10">
+            <span>Estado: Expansión futura</span>
+            <i class="fa-solid fa-box-archive"></i>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 5 -->
+      <div class="col">
+        <div class="card h-100 border-0 p-4" style="background-color: #12131c; border-radius: 16px; border: 1px solid rgba(255, 255, 255, 0.05);">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <div class="p-3 rounded-3" style="background-color: #231238; color: #d178ff;">
+              <i class="fa-solid fa-chart-pie fs-4"></i>
+            </div>
+            <span class="badge px-2 py-1 rounded-3" style="background-color: #1a1b28; color: #d178ff; border: 1px solid #3b1754;">v1.3 Stats</span>
+          </div>
+          <h4 class="fw-bold text-white mb-2">Estadísticas del Coleccionista</h4>
+          <p class="text-secondary small mb-4">
+            Obtén métricas de lectura, porcentaje de mangas leídos, autores favoritos, tiempo invertido y valoración estimada de tu biblioteca física y digital.
+          </p>
+          <div class="mt-auto d-flex justify-content-between align-items-center text-secondary small pt-3 border-top border-secondary border-opacity-10">
+            <span>Estado: Planificado</span>
+            <i class="fa-solid fa-chart-line"></i>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 6 -->
+      <div class="col">
+        <div class="card h-100 border-0 p-4" style="background-color: #12131c; border-radius: 16px; border: 1px solid rgba(255, 255, 255, 0.05);">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <div class="p-3 rounded-3" style="background-color: #231238; color: #d178ff;">
+              <i class="fa-solid fa-mobile-screen-button fs-4"></i>
+            </div>
+            <span class="badge px-2 py-1 rounded-3" style="background-color: #1a1b28; color: #d178ff; border: 1px solid #3b1754;">v2.1 Mobile</span>
+          </div>
+          <h4 class="fw-bold text-white mb-2">Integraciones Sync & App</h4>
+          <p class="text-secondary small mb-4">
+            Sincronización directa con AniList/MyAnimeList, notificaciones push para preventas y aplicación móvil con modo de lectura offline para tus tomos digitales.
+          </p>
+          <div class="mt-auto d-flex justify-content-between align-items-center text-secondary small pt-3 border-top border-secondary border-opacity-10">
+            <span>Estado: Expansión futura</span>
+            <i class="fa-solid fa-arrows-rotate"></i>
+          </div>
+        </div>
+      </div>
+
+    </div>
   </main>
 
   <!-- Footer -->
@@ -202,24 +213,25 @@
         <div class="col-6 col-md-2">
           <h6 class="fw-bold text-white mb-3">Explorar</h6>
           <ul class="list-unstyled text-secondary small d-flex flex-column gap-2 mb-0">
-            <li><a href="../catalogo/catalogo.html" class="text-secondary text-decoration-none">Catálogo</a></li>
-            <li><a href="../editoriales/editoriales.html" class="text-secondary text-decoration-none">Editoriales</a></li>
+            <li><a href="../catalogo/catalogo.html" class="text-secondary text-decoration-none hover-white">Catálogo</a></li>
+            <li><a href="../index.html#novedades-grid" class="text-secondary text-decoration-none hover-white">Novedades</a></li>
+            <li><a href="../editoriales/editoriales.html" class="text-secondary text-decoration-none hover-white">Editoriales</a></li>
           </ul>
         </div>
 
         <div class="col-6 col-md-3">
           <h6 class="fw-bold text-white mb-3">Mi cuenta</h6>
           <ul class="list-unstyled text-secondary small d-flex flex-column gap-2 mb-0">
-            <li><a href="../biblioteca/biblioteca.html" class="text-secondary text-decoration-none">Mi Biblioteca</a></li>
-            <li><a href="../puntos/puntos.html" class="text-secondary text-decoration-none">Puntos y Recompensas</a></li>
+            <li><a href="../biblioteca/biblioteca.html" class="text-secondary text-decoration-none hover-white">Mi Biblioteca</a></li>
+            <li><a href="../puntos/puntos.html" class="text-secondary text-decoration-none hover-white">Puntos y Recompensas</a></li>
           </ul>
         </div>
 
         <div class="col-12 col-md-3">
           <h6 class="fw-bold text-white mb-3">Ayuda</h6>
           <ul class="list-unstyled text-secondary small d-flex flex-column gap-2 mb-0">
-            <li><a href="#" class="text-secondary text-decoration-none">Preguntas frecuentes</a></li>
-            <li><a href="#" class="text-secondary text-decoration-none">Contacto</a></li>
+            <li><a href="#" class="text-secondary text-decoration-none hover-white">Preguntas frecuentes</a></li>
+            <li><a href="#" class="text-secondary text-decoration-none hover-white">Contacto</a></li>
           </ul>
         </div>
       </div>
@@ -228,6 +240,5 @@
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="../main.js"></script>
-  <script src="proximamente.js"></script>
 </body>
 </html>

@@ -62,7 +62,8 @@ document.addEventListener('DOMContentLoaded', () => {
         isGuest: true
       };
 
-      // Limpiar carrito y datos de usuario previo
+      // Limpiar TODAS las variables de carrito y datos de usuario previo
+      localStorage.removeItem('cart');
       localStorage.removeItem('mangaFlow_cart');
       localStorage.removeItem('activeUser');
       localStorage.removeItem('currentUser');

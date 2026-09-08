@@ -60,7 +60,7 @@
     </div>
   </nav>
 
-  <!-- Contenido Cuenta y Perfil Integrado -->
+  <!-- Contenido Cuenta -->
   <div class="container my-5">
     <div class="row g-4">
       
@@ -80,6 +80,7 @@
           
           <div class="nav flex-column nav-pills gap-2 text-start" role="tablist">
             <button class="nav-link active text-white" id="tab-resumen-btn" data-bs-toggle="pill" data-bs-target="#tab-resumen" type="button"><i class="fa-solid fa-chart-pie me-2"></i> Resumen</button>
+            <button class="nav-link text-white" id="tab-deseados-btn" data-bs-toggle="pill" data-bs-target="#tab-deseados" type="button"><i class="fa-solid fa-heart me-2"></i> Lista de Deseados</button>
             <button class="nav-link text-white" id="tab-info-btn" data-bs-toggle="pill" data-bs-target="#tab-info" type="button"><i class="fa-solid fa-id-card me-2"></i> Información Personal</button>
             <button class="nav-link text-white" id="tab-pedidos-btn" data-bs-toggle="pill" data-bs-target="#tab-pedidos" type="button"><i class="fa-solid fa-box me-2"></i> Historial de Compras</button>
             <button class="nav-link text-white" id="tab-seguridad-btn" data-bs-toggle="pill" data-bs-target="#tab-seguridad" type="button"><i class="fa-solid fa-shield-halved me-2"></i> Seguridad</button>
@@ -101,15 +102,25 @@
               <div class="d-flex align-items-center justify-content-between p-3 rounded-3" style="background-color: #0b0b12;">
                 <div>
                   <span class="text-secondary small d-block">Puntos Acumulados</span>
-                  <span id="account-points" class="fs-3 fw-bold text-white">1250 pts</span>
+                  <span id="account-points" class="fs-3 fw-bold text-white">1.250 pts</span>
                 </div>
-                <a href="../puntos/puntos.html" class="btn btn-sm btn-outline-light">Canjear Recompensas</a>
+                <a href="../puntos/puntos.html" class="btn btn-sm text-white fw-bold" style="background-color: #a100ff;">Canjear Recompensas</a>
               </div>
             </div>
 
             <div class="p-4 rounded-3" style="background-color: #12131f; border: 1px solid #231238;">
               <h4 class="text-white fw-bold mb-3"><i class="fa-solid fa-clock-rotate-left text-accent me-2" style="color: #d178ff;"></i>Última Actividad</h4>
               <p class="text-secondary small mb-0">Has iniciado sesión correctamente en MangaFlow.</p>
+            </div>
+          </div>
+
+          <!-- Tab Lista de Deseados -->
+          <div class="tab-pane fade" id="tab-deseados">
+            <div class="p-4 rounded-3" style="background-color: #12131f; border: 1px solid #231238;">
+              <h4 class="text-white fw-bold mb-4"><i class="fa-solid fa-heart me-2" style="color: #d178ff;"></i>Mi Lista de Deseados</h4>
+              <div id="wishlist-container" class="row row-cols-1 row-cols-sm-2 g-3">
+                <!-- Se llena mediante JS -->
+              </div>
             </div>
           </div>
 
@@ -204,7 +215,6 @@
     </div>
   </div>
 
-  <!-- Footer -->
   <footer class="footer-custom border-top border-secondary border-opacity-10 mt-5 pt-5 pb-4" style="background-color: #0b0c10;">
     <div class="container">
       <div class="row g-4">
