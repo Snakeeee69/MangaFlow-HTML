@@ -41,7 +41,6 @@ function renderizarBiblioteca() {
     return;
   }
 
-  // Fallback visual 100% offline en formato SVG Data URI para evitar depender de servicios externos
   const svgFallback = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='280' viewBox='0 0 200 280'><rect width='100%' height='100%' fill='%23231238'/><text x='50%' y='45%' fill='%23d178ff' font-size='18' font-weight='bold' font-family='sans-serif' text-anchor='middle'>One Piece</text><text x='50%' y='55%' fill='%23ffffff' font-size='14' font-family='sans-serif' text-anchor='middle'>Tomo 1</text></svg>";
 
   container.innerHTML = `

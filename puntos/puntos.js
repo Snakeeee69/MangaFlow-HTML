@@ -1,11 +1,9 @@
-// Obtener usuario activo
 function obtenerUsuarioActual() {
   return JSON.parse(localStorage.getItem('mangaFlow_session')) || 
          JSON.parse(localStorage.getItem('activeUser')) || 
          JSON.parse(localStorage.getItem('usuarioLogueado'));
 }
 
-// Obtener puntos del usuario actual o 0 si no existe
 function obtenerPuntosIniciales() {
   const usuario = obtenerUsuarioActual();
   return usuario ? (usuario.puntos || 0) : 0;
@@ -201,7 +199,6 @@ function canjear(nombre, costo) {
     puntosUsuario -= costo;
     usuario.puntos = puntosUsuario;
     
-    // Sincronizar en todas las llaves posibles
     localStorage.setItem('usuarioLogueado', JSON.stringify(usuario));
     localStorage.setItem('mangaFlow_session', JSON.stringify(usuario));
     localStorage.setItem('activeUser', JSON.stringify(usuario));
@@ -277,7 +274,6 @@ function procesarCertificacion(e) {
   puntosUsuario += estadoObj.puntos;
   usuario.puntos = puntosUsuario;
   
-  // Sincronización global del usuario
   localStorage.setItem('usuarioLogueado', JSON.stringify(usuario));
   localStorage.setItem('mangaFlow_session', JSON.stringify(usuario));
   localStorage.setItem('activeUser', JSON.stringify(usuario));

@@ -3,7 +3,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const btnGuest = document.getElementById('btn-guest');
   const errorAlert = document.getElementById('login-error');
 
-  // Lógica de inicio de sesión
   if (loginForm) {
     loginForm.addEventListener('submit', (e) => {
       e.preventDefault();
@@ -15,7 +14,6 @@ document.addEventListener('DOMContentLoaded', () => {
       const email = document.getElementById('email').value.trim();
       const password = document.getElementById('password').value.trim();
 
-      // Reglas de negocio para correo
       const allowedDomains = ['@duoc.cl', '@profesor.duoc.cl', '@gmail.com'];
       const hasValidDomain = allowedDomains.some(domain => email.endsWith(domain));
 
@@ -24,17 +22,14 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
       }
 
-      // Reglas de negocio para contraseña
       if (!password || password.length < 4 || password.length > 10) {
         showError('La contraseña debe tener entre 4 y 10 caracteres.');
         return;
       }
 
-      // Generar nombre de usuario legible desde el correo
       const extractedName = email.split('@')[0];
       const formattedName = extractedName.charAt(0).toUpperCase() + extractedName.slice(1);
 
-      // Guardar datos unificados de sesión
       const sessionData = {
         role: 'user',
         email: email,
@@ -51,7 +46,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Lógica para modo Invitado
   if (btnGuest) {
     btnGuest.addEventListener('click', () => {
       const guestSession = {
@@ -62,7 +56,6 @@ document.addEventListener('DOMContentLoaded', () => {
         isGuest: true
       };
 
-      // Limpiar TODAS las variables de carrito y datos de usuario previo
       localStorage.removeItem('cart');
       localStorage.removeItem('mangaFlow_cart');
       localStorage.removeItem('activeUser');

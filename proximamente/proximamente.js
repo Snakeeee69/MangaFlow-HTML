@@ -40,7 +40,6 @@ document.addEventListener('DOMContentLoaded', () => {
   function renderPeticiones() {
     peticionesCount.textContent = `${peticiones.length} peticiones`;
     
-    // Ordenar por número de votos descendente
     const ordenadas = [...peticiones].sort((a, b) => b.votos - a.votos);
 
     peticionesContainer.innerHTML = ordenadas.map((p, index) => `

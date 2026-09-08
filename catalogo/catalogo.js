@@ -1,5 +1,4 @@
 const catalogoMangas = [
-  // --- MANGAS FÍSICOS ---
   { id: 1, titulo: "Ataque a los Titanes", precio: 9490, demografia: "Shōnen", generos: ["Acción", "Drama", "Fantasy"], esDigitalOnly: false, imagen: "../images/catalogo/ataque_a_los_titanes_1.jpg" },
   { id: 2, titulo: "Atom: The Beginning", precio: 8990, demografia: "Seinen", generos: ["Acción", "Histórico"], esDigitalOnly: false, imagen: "../images/catalogo/Atom_the_beginning_1.png" },
   { id: 4, titulo: "Berserk", precio: 11990, demografia: "Seinen", generos: ["Acción", "Horror", "Fantasy", "Drama"], esDigitalOnly: false, imagen: "../images/catalogo/Berserk.png" },
@@ -13,7 +12,6 @@ const catalogoMangas = [
   { id: 16, titulo: "Jujutsu Kaisen", precio: 8990, demografia: "Shōnen", generos: ["Acción", "Horror", "Fantasy"], esDigitalOnly: false, imagen: "../images/catalogo/xJujutsu_kaisen_arg_01.jpg" },
   { id: 17, titulo: "Call of the Night", precio: 8590, demografia: "Shōnen", generos: ["Romance", "Comedia", "Psicológico"], esDigitalOnly: false, imagen: "../images/catalogo/yofukashi_no_uta.jpg" },
 
-  // --- MANGAS DIGITALES ---
   { id: 3, titulo: "Bakemonogatari", precio: 2300, demografia: "Seinen", generos: ["Romance", "Psicológico"], esDigitalOnly: true, proximamenteFisico: false, imagen: "../images/catalogo/Bakemonogatari_1.png" },
   { id: 5, titulo: "Demon Slave", precio: 2300, demografia: "Shōnen", generos: ["Acción", "Fantasy"], esDigitalOnly: true, proximamenteFisico: false, imagen: "../images/catalogo/Demon_slave_01.jpg" },
   { id: 7, titulo: "Frieren", precio: 2300, demografia: "Shōnen", generos: ["Aventura", "Fantasy", "Drama"], esDigitalOnly: true, proximamenteFisico: true, imagen: "../images/catalogo/Frieren_01.jpg" },

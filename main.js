@@ -1,4 +1,3 @@
-// Arreglo de Novedades
 const novedades = [
   { id: 1, titulo: "Demon Slayer #1", precio: 8990, demografia: "SHŌNEN", imagen: "images/novedades/Demon_Slayer_01.jpg" },
   { id: 2, titulo: "Kaguya-sama: Love is War #1", precio: 9490, demografia: "SEINEN", imagen: "images/novedades/Kaguya_sama_arg_01.jpg" },
@@ -8,7 +7,6 @@ const novedades = [
   { id: 6, titulo: "Call of the Night #1", precio: 8590, demografia: "SHŌNEN", imagen: "images/novedades/yofukashi_no_uta.jpg" }
 ];
 
-// Arreglo de Más Populares
 const populares = [
   { id: 101, titulo: "Ataque a los Titanes #1", precio: 9490, demografia: "SHŌNEN", imagen: "images/mas_populares/ataque_a_los_titanes_1.jpg" },
   { id: 102, titulo: "Atom: The Beginning #1", precio: 8990, demografia: "SEINEN", imagen: "images/mas_populares/Atom_the_beginning_1.png" },
@@ -21,7 +19,6 @@ const populares = [
 ];
 
 document.addEventListener("DOMContentLoaded", () => {
-  // Configurar carrusel hero
   const heroCarousel = document.getElementById("heroCarousel");
   if (heroCarousel) {
     heroCarousel.addEventListener("slide.bs.carousel", (event) => {
@@ -36,7 +33,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Renderizar sección de novedades
   const novedadesGrid = document.getElementById("novedades-grid");
   if (novedadesGrid) {
     const relativePrefix = isSubfolder() ? "../" : "";
@@ -59,7 +55,6 @@ document.addEventListener("DOMContentLoaded", () => {
     `).join("");
   }
 
-  // Renderizar sección de populares
   const popularesGrid = document.getElementById("populares-grid");
   if (popularesGrid) {
     const relativePrefix = isSubfolder() ? "../" : "";
@@ -82,12 +77,10 @@ document.addEventListener("DOMContentLoaded", () => {
     `).join("");
   }
 
-  // Inicializar estado global
   checkUserSession();
   actualizarContadorCarrito();
 });
 
-// Comprobar la sesión actual del usuario (Sincronización global)
 function checkUserSession() {
   const sessionData = JSON.parse(localStorage.getItem("mangaFlow_session")) || JSON.parse(localStorage.getItem("activeUser")) || JSON.parse(localStorage.getItem("usuarioLogueado"));
 
@@ -140,7 +133,6 @@ function checkUserSession() {
   }
 }
 
-// Redirigir si intenta entrar a login estando ya autenticado
 function bypassLoginIfAuthenticated() {
   const currentPath = window.location.pathname;
   if (currentPath.endsWith("login.html")) {
@@ -149,7 +141,6 @@ function bypassLoginIfAuthenticated() {
   }
 }
 
-// Detecta si la ruta actual está en una subcarpeta
 function isSubfolder() {
   return window.location.pathname.includes("/catalogo/") || 
          window.location.pathname.includes("/puntos/") || 
@@ -159,11 +150,9 @@ function isSubfolder() {
          window.location.pathname.includes("/proximamente/");
 }
 
-// Agregar producto al carrito por ID
 function agregarAlCarrito(productId) {
   const sessionData = JSON.parse(localStorage.getItem("mangaFlow_session")) || JSON.parse(localStorage.getItem("activeUser")) || JSON.parse(localStorage.getItem("usuarioLogueado"));
 
-  // Bloquear acción si es invitado
   if (!sessionData || sessionData.isGuest) {
     alert("El usuario invitado no tiene acceso al carrito de compras. Por favor, inicia sesión para continuar.");
     return;
@@ -187,14 +176,12 @@ function agregarAlCarrito(productId) {
   actualizarContadorCarrito();
 }
 
-// Actualizar el número mostrado en la insignia del carrito
 function actualizarContadorCarrito() {
   const cartCountEl = document.getElementById("cart-count");
   if (!cartCountEl) return;
 
   const sessionData = JSON.parse(localStorage.getItem("mangaFlow_session")) || JSON.parse(localStorage.getItem("activeUser")) || JSON.parse(localStorage.getItem("usuarioLogueado"));
   
-  // Si no hay sesión o es invitado, forzar a cero visualmente
   if (!sessionData || sessionData.isGuest) {
     cartCountEl.textContent = "0";
     return;
@@ -205,7 +192,6 @@ function actualizarContadorCarrito() {
   cartCountEl.textContent = totalItems;
 }
 
-// Cerrar sesión limpiando todas las claves de usuario
 function logoutUser() {
   localStorage.removeItem("mangaFlow_session");
   localStorage.removeItem("activeUser");
