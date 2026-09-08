@@ -1,7 +1,7 @@
-// Obtener puntos del usuario actual o defecto
+// Obtener puntos del usuario actual o 0 si es invitado
 function obtenerPuntosIniciales() {
   const usuario = JSON.parse(localStorage.getItem('usuarioLogueado'));
-  return usuario ? (usuario.puntos || 0) : 1250;
+  return usuario ? (usuario.puntos || 0) : 0;
 }
 
 let puntosUsuario = obtenerPuntosIniciales();
@@ -137,8 +137,10 @@ function renderRecompensas() {
   const container = document.getElementById("sec-recompensas");
   if (!container) return;
 
+  const usuario = JSON.parse(localStorage.getItem('usuarioLogueado'));
+
   container.innerHTML = recompensas.map(r => {
-    const puedeCanjear = puntosUsuario >= r.costoPuntos && r.stock > 0;
+    const puedeCanjear = usuario && puntosUsuario >= r.costoPuntos && r.stock > 0;
     const badgeColor = r.tipo === 'edicion-especial' ? 'bg-warning text-dark' : r.tipo === 'manga' ? 'bg-primary' : 'bg-purple';
     const badgeTexto = r.tipo === 'edicion-especial' ? 'Premium' : r.tipo === 'manga' ? 'Manga' : 'Merch';
 
@@ -166,7 +168,9 @@ function renderRecompensas() {
                 <i class="fa-solid fa-gift me-1"></i> Canjear
               </button>
             </div>
-            ${!puedeCanjear && puntosUsuario < r.costoPuntos ? `
+            ${!usuario ? `
+              <p class="text-danger text-xs m-0" style="font-size: 0.7rem;">Inicia sesión para canjear</p>
+            ` : !puedeCanjear && puntosUsuario < r.costoPuntos ? `
               <p class="text-secondary text-xs m-0" style="font-size: 0.7rem;">Te faltan ${(r.costoPuntos - puntosUsuario).toLocaleString("es-CL")} pts</p>
             ` : ''}
           </div>
@@ -244,6 +248,13 @@ function cargarTomos() {
 function procesarCertificacion(e) {
   e.preventDefault();
 
+  const usuario = JSON.parse(localStorage.getItem('usuarioLogueado'));
+  if (!usuario) {
+    alert("Debes iniciar sesión para entregar mangas y reclamar puntos.");
+    window.location.href = "../login.html";
+    return;
+  }
+
   const idManga = document.getElementById("select-manga").value;
   const numTomo = document.getElementById("select-tomo").value;
   const mangaObj = mangasDisponibles.find(m => m.id === idManga);
@@ -252,11 +263,8 @@ function procesarCertificacion(e) {
   if (!mangaObj || !numTomo) return;
 
   puntosUsuario += estadoObj.puntos;
-  const usuario = JSON.parse(localStorage.getItem('usuarioLogueado'));
-  if (usuario) {
-    usuario.puntos = puntosUsuario;
-    localStorage.setItem('usuarioLogueado', JSON.stringify(usuario));
-  }
+  usuario.puntos = puntosUsuario;
+  localStorage.setItem('usuarioLogueado', JSON.stringify(usuario));
 
   actualizarVistaPuntos();
   renderRecompensas();

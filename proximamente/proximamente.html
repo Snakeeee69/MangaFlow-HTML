@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MangaFlow - Catálogo</title>
+  <title>MangaFlow - Próximamente</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
   <link rel="stylesheet" href="../styles.css" />
@@ -36,12 +36,12 @@
       <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
         <ul class="navbar-nav align-items-center gap-2 me-lg-4">
           <li class="nav-item"><a class="nav-link px-3 text-white fw-semibold" href="../index.html">Inicio</a></li>
-          <li class="nav-item"><a class="nav-link active px-3 py-1 rounded-3" style="background-color: #3b1754; color: #d178ff !important;" href="catalogo.html">Catálogo</a></li>
+          <li class="nav-item"><a class="nav-link px-3 text-white fw-semibold" href="../catalogo/catalogo.html">Catálogo</a></li>
           <li class="nav-item"><a class="nav-link px-3 text-white fw-semibold" href="../puntos/puntos.html">Puntos y recompensas</a></li>
           <li class="nav-item"><a class="nav-link px-3 text-white fw-semibold" href="../editoriales/editoriales.html">Editoriales</a></li>
           <li class="nav-item"><a class="nav-link px-3 text-white fw-semibold" href="../biblioteca/biblioteca.html">Mi Biblioteca</a></li>
           <li class="nav-item position-relative">
-            <a class="nav-link px-3 text-white fw-semibold" href="../proximamente/proximamente.html">Próximamente
+            <a class="nav-link active px-3 py-1 rounded-3" style="background-color: #3b1754; color: #d178ff !important;" href="proximamente.html">Próximamente
               <span class="badge position-absolute top-0 start-100 translate-middle rounded-pill" style="font-size: 0.55rem; background-color: #a100ff;">NEW</span>
             </a>
           </li>
@@ -56,59 +56,55 @@
     </div>
   </nav>
 
-  <!-- Contenido del Catálogo -->
+  <!-- Sección Próximamente -->
   <main class="container my-5">
-    <div class="d-flex align-items-center justify-content-between flex-wrap gap-3 mb-4">
-      <div>
-        <h1 class="text-white font-bold fs-2 fw-bold mb-1">Catálogo</h1>
-        <p class="text-secondary small mb-0">Explora nuestra colección de mangas físicos y digitales</p>
+    <div class="text-center py-5">
+      <div class="d-inline-block p-4 rounded-circle mb-3" style="background-color: #1c102b;">
+        <i class="fa-solid fa-rocket fs-1" style="color: #d178ff;"></i>
       </div>
+      <h1 class="text-white fw-bold mb-2">Lanzamientos Próximos</h1>
+      <p class="text-secondary max-w-lg mx-auto mb-5" style="max-width: 500px;">
+        Prepárate para los próximos tomos físicos y licencias que llegarán muy pronto a MangaFlow.
+      </p>
 
-      <div class="d-flex gap-2 p-1 rounded-3" style="background-color: #12131f;">
-        <button id="tab-todos" class="btn btn-sm px-3 py-2 rounded-2 fw-semibold text-white bg-magenta border-0" onclick="cambiarTabFormato('todos')">
-          <i class="fa-solid fa-book-open me-1"></i> Todos
-        </button>
-        <button id="tab-digitales" class="btn btn-sm px-3 py-2 rounded-2 fw-semibold text-secondary border-0" onclick="cambiarTabFormato('digitales')">
-          <i class="fa-solid fa-tablet-screen-button me-1"></i> Mangas Digitales
-        </button>
+      <div class="row row-cols-1 row-cols-md-3 g-4 text-start">
+        <div class="col">
+          <div class="card-panel p-3 h-100 d-flex flex-column justify-content-between">
+            <div>
+              <span class="badge bg-purple text-white mb-2">Preventa Próxima</span>
+              <h5 class="text-white fw-bold mb-1">Chainsaw Man - Vol. 15</h5>
+              <p class="text-secondary small mb-3">Lanzamiento programado para la próxima temporada.</p>
+            </div>
+            <button class="btn btn-outline-light btn-sm w-100 disabled">Reservar pronto</button>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="card-panel p-3 h-100 d-flex flex-column justify-content-between">
+            <div>
+              <span class="badge bg-info text-dark mb-2">Edición Especial</span>
+              <h5 class="text-white fw-bold mb-1">Berserk Deluxe Vol. 14</h5>
+              <p class="text-secondary small mb-3">Edición tapa dura de gran formato.</p>
+            </div>
+            <button class="btn btn-outline-light btn-sm w-100 disabled">Reservar pronto</button>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="card-panel p-3 h-100 d-flex flex-column justify-content-between">
+            <div>
+              <span class="badge bg-warning text-dark mb-2">Nueva Licencia</span>
+              <h5 class="text-white fw-bold mb-1">Kagurabachi - Vol. 1</h5>
+              <p class="text-secondary small mb-3">Llegada oficial en formato físico.</p>
+            </div>
+            <button class="btn btn-outline-light btn-sm w-100 disabled">Reservar pronto</button>
+          </div>
+        </div>
       </div>
-    </div>
-
-    <div class="card-panel p-4 mb-4">
-      <div class="position-relative mb-3">
-        <i class="fa-solid fa-magnifying-glass position-absolute top-50 start-0 translate-middle-y ms-3 text-secondary"></i>
-        <input id="input-busqueda" type="text" class="form-control bg-dark border-secondary border-opacity-20 text-white ps-5 py-2" placeholder="Buscar manga por título..." style="border-radius: 10px;" />
-      </div>
-
-      <div class="d-flex align-items-center gap-2 flex-wrap mb-3">
-        <i class="fa-solid fa-filter text-secondary me-1"></i>
-        <span class="text-secondary text-uppercase fs-7 fw-bold me-2" style="font-size: 0.75rem;">Demografía:</span>
-        <div id="filter-demografia" class="d-flex flex-wrap gap-2"></div>
-      </div>
-
-      <div class="d-flex align-items-center gap-2 flex-wrap">
-        <span class="text-secondary text-uppercase fs-7 fw-bold me-2 ms-md-4" style="font-size: 0.75rem;">Género:</span>
-        <div id="filter-genero" class="d-flex flex-wrap gap-2"></div>
-      </div>
-    </div>
-
-    <div class="d-flex align-items-center justify-content-between mb-4">
-      <span id="contador-obras" class="text-secondary small">0 obras encontradas</span>
-      <button id="btn-limpiar" class="btn btn-link text-decoration-none p-0 small fw-bold d-none" style="color: #d178ff;">
-        Limpiar filtros
-      </button>
-    </div>
-
-    <div id="catalogo-grid" class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4"></div>
-
-    <div id="no-results" class="text-center py-5 d-none">
-      <i class="fa-regular fa-face-frown text-secondary fs-1 mb-3"></i>
-      <p class="text-secondary fs-5">No se encontraron mangas con esos filtros</p>
     </div>
   </main>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="../main.js"></script>
-  <script src="catalogo.js"></script>
 </body>
 </html>

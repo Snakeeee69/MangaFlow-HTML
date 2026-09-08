@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MangaFlow - Mi Cuenta</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="../styles.css" />
+</head>
+<body>
+
+  <!-- Header Superior -->
+  <header class="text-center py-4 border-bottom border-secondary border-opacity-10" style="background-color: #0b0b12;">
+    <div class="container">
+      <a href="../index.html" class="text-decoration-none">
+        <div class="d-flex justify-content-center align-items-center mb-2">
+          <div class="rounded-circle p-3 d-inline-flex align-items-center justify-content-center" style="background: linear-gradient(135deg, #a100ff, #e100ff); width: 64px; height: 64px;">
+            <img src="../images/logo/logoMangaFlow.png" alt="MangaFlow Logo" class="rounded-circle" style="width: 48px; height: 48px; object-fit: cover;" onerror="this.outerHTML='<i class=\'fa-solid fa-book-open text-white fs-3\'></i>';" />
+          </div>
+        </div>
+        <h1 class="fs-2 fw-bold text-white mb-1">Manga<span style="color: #d178ff;">Flow</span></h1>
+      </a>
+      <p class="text-secondary small mb-0">Panel General de la Cuenta de Usuario</p>
+    </div>
+  </header>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark border-bottom border-secondary border-opacity-10 px-4 py-3 sticky-top z-3" style="background-color: #0b0b12;">
+    <div class="container-fluid justify-content-center">
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+        <ul class="navbar-nav align-items-center gap-2 me-lg-4">
+          <li class="nav-item"><a class="nav-link px-3 text-white fw-semibold" href="../index.html">Inicio</a></li>
+          <li class="nav-item"><a class="nav-link px-3 text-white fw-semibold" href="../catalogo/catalogo.html">Catálogo</a></li>
+          <li class="nav-item"><a class="nav-link px-3 text-white fw-semibold" href="../puntos/puntos.html">Puntos y recompensas</a></li>
+          <li class="nav-item"><a class="nav-link px-3 text-white fw-semibold" href="../editoriales/editoriales.html">Editoriales</a></li>
+          <li class="nav-item"><a class="nav-link px-3 text-white fw-semibold" href="../biblioteca/biblioteca.html">Mi Biblioteca</a></li>
+          <li class="nav-item position-relative">
+            <a class="nav-link px-3 text-white fw-semibold" href="../proximamente/proximamente.html">Próximamente
+              <span class="badge position-absolute top-0 start-100 translate-middle rounded-pill" style="font-size: 0.55rem; background-color: #a100ff;">NEW</span>
+            </a>
+          </li>
+          <li class="nav-item"><a class="nav-link active px-3 py-1 rounded-3" style="background-color: #3b1754; color: #d178ff !important;" href="./cuenta.html">Mi cuenta</a></li>
+        </ul>
+
+        <div class="d-flex align-items-center gap-2 mt-3 mt-lg-0">
+          <span id="user-badge" class="badge px-3 py-2 rounded-3" style="background-color: #231238; color: #d178ff; border: 1px solid #3b1754;">Usuario</span>
+          <a id="user-action-btn" href="../login.html" class="btn btn-dark border-0 p-2 text-secondary" style="background-color: #12131f;"><i class="fa-solid fa-right-to-bracket"></i></a>
+          <a href="../carrito.html" class="btn btn-dark border-0 p-2 text-white position-relative" style="background-color: #12131f;">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <span id="cart-count" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="font-size: 0.6rem;">0</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Contenido Cuenta y Perfil Integrado -->
+  <div class="container my-5">
+    <div class="row g-4">
+      
+      <!-- Panel Izquierdo / Perfil -->
+      <div class="col-lg-4">
+        <div class="p-4 rounded-3 text-center" style="background-color: #12131f; border: 1px solid #231238;">
+          <div class="mb-3">
+            <div class="rounded-circle p-2 d-inline-flex align-items-center justify-content-center" style="background: linear-gradient(135deg, #a100ff, #e100ff); width: 80px; height: 80px;">
+              <i class="fa-solid fa-user text-white fs-1"></i>
+            </div>
+          </div>
+          <h5 id="account-name" class="text-white fw-bold mb-1">Usuario Demo</h5>
+          <p id="account-email" class="text-secondary small mb-3">usuario@duoc.cl</p>
+          <span id="account-role" class="badge px-3 py-2 rounded-pill mb-3" style="background-color: #3b1754; color: #d178ff;">Cliente</span>
+          
+          <hr class="border-secondary border-opacity-25 my-3" />
+          
+          <div class="nav flex-column nav-pills gap-2 text-start" role="tablist">
+            <button class="nav-link active text-white" id="tab-resumen-btn" data-bs-toggle="pill" data-bs-target="#tab-resumen" type="button"><i class="fa-solid fa-chart-pie me-2"></i> Resumen</button>
+            <button class="nav-link text-white" id="tab-info-btn" data-bs-toggle="pill" data-bs-target="#tab-info" type="button"><i class="fa-solid fa-id-card me-2"></i> Información Personal</button>
+            <button class="nav-link text-white" id="tab-pedidos-btn" data-bs-toggle="pill" data-bs-target="#tab-pedidos" type="button"><i class="fa-solid fa-box me-2"></i> Historial de Compras</button>
+            <button class="nav-link text-white" id="tab-seguridad-btn" data-bs-toggle="pill" data-bs-target="#tab-seguridad" type="button"><i class="fa-solid fa-shield-halved me-2"></i> Seguridad</button>
+          </div>
+
+          <hr class="border-secondary border-opacity-25 my-3" />
+          <button id="logout-btn" class="btn btn-outline-danger w-100"><i class="fa-solid fa-right-from-bracket me-2"></i>Cerrar Sesión</button>
+        </div>
+      </div>
+
+      <!-- Panel Derecho / Secciones -->
+      <div class="col-lg-8">
+        <div class="tab-content">
+          
+          <!-- Tab Resumen -->
+          <div class="tab-pane fade show active" id="tab-resumen">
+            <div class="p-4 rounded-3 mb-4" style="background-color: #12131f; border: 1px solid #231238;">
+              <h4 class="text-white fw-bold mb-3"><i class="fa-solid fa-star text-accent me-2" style="color: #d178ff;"></i>Puntos MangaFlow</h4>
+              <div class="d-flex align-items-center justify-content-between p-3 rounded-3" style="background-color: #0b0b12;">
+                <div>
+                  <span class="text-secondary small d-block">Puntos Acumulados</span>
+                  <span id="account-points" class="fs-3 fw-bold text-white">1250 pts</span>
+                </div>
+                <a href="../puntos/puntos.html" class="btn btn-sm btn-outline-light">Canjear Recompensas</a>
+              </div>
+            </div>
+
+            <div class="p-4 rounded-3" style="background-color: #12131f; border: 1px solid #231238;">
+              <h4 class="text-white fw-bold mb-3"><i class="fa-solid fa-clock-rotate-left text-accent me-2" style="color: #d178ff;"></i>Última Actividad</h4>
+              <p class="text-secondary small mb-0">Has iniciado sesión correctamente en MangaFlow.</p>
+            </div>
+          </div>
+
+          <!-- Tab Información Personal -->
+          <div class="tab-pane fade" id="tab-info">
+            <div class="p-4 rounded-3" style="background-color: #12131f; border: 1px solid #231238;">
+              <h4 class="text-white fw-bold mb-4"><i class="fa-solid fa-user-gear me-2" style="color: #d178ff;"></i>Editar Información</h4>
+              <form id="profile-form">
+                <div class="row g-3">
+                  <div class="col-md-6">
+                    <label class="form-label text-secondary small">Nombre Completo</label>
+                    <input type="text" class="form-control bg-dark text-white border-secondary border-opacity-25" id="input-nombre" value="Usuario Demo">
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label text-secondary small">Correo Electrónico</label>
+                    <input type="email" class="form-control bg-dark text-white border-secondary border-opacity-25" id="input-email" value="usuario@duoc.cl" readonly>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label text-secondary small">Teléfono</label>
+                    <input type="tel" class="form-control bg-dark text-white border-secondary border-opacity-25" id="input-telefono" placeholder="+56 9 1234 5678">
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label text-secondary small">RUT</label>
+                    <input type="text" class="form-control bg-dark text-white border-secondary border-opacity-25" id="input-rut" value="12345678-9" readonly>
+                  </div>
+                  <div class="col-12 mt-4">
+                    <button type="submit" class="btn px-4 text-white fw-bold" style="background: #a100ff; border: none;">Guardar Cambios</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+
+          <!-- Tab Historial de Pedidos -->
+          <div class="tab-pane fade" id="tab-pedidos">
+            <div class="p-4 rounded-3" style="background-color: #12131f; border: 1px solid #231238;">
+              <h4 class="text-white fw-bold mb-4"><i class="fa-solid fa-receipt me-2" style="color: #d178ff;"></i>Historial de Compras</h4>
+              <div class="table-responsive">
+                <table class="table table-dark table-hover align-middle mb-0">
+                  <thead>
+                    <tr>
+                      <th scope="col"># Orden</th>
+                      <th scope="col">Fecha</th>
+                      <th scope="col">Estado</th>
+                      <th scope="col">Total</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>#MF-1024</td>
+                      <td>05/03/2026</td>
+                      <td><span class="badge bg-success">Entregado</span></td>
+                      <td>$18.000 CLP</td>
+                    </tr>
+                    <tr>
+                      <td>#MF-0981</td>
+                      <td>12/02/2026</td>
+                      <td><span class="badge bg-success">Entregado</span></td>
+                      <td>$12.000 CLP</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tab Seguridad -->
+          <div class="tab-pane fade" id="tab-seguridad">
+            <div class="p-4 rounded-3" style="background-color: #12131f; border: 1px solid #231238;">
+              <h4 class="text-white fw-bold mb-4"><i class="fa-solid fa-shield-halved me-2" style="color: #d178ff;"></i>Cambiar Contraseña</h4>
+              <form id="password-form">
+                <div class="mb-3">
+                  <label class="form-label text-secondary small">Contraseña Actual</label>
+                  <input type="password" class="form-control bg-dark text-white border-secondary border-opacity-25" required>
+                </div>
+                <div class="mb-3">
+                  <label class="form-label text-secondary small">Nueva Contraseña</label>
+                  <input type="password" class="form-control bg-dark text-white border-secondary border-opacity-25" required>
+                </div>
+                <div class="mb-3">
+                  <label class="form-label text-secondary small">Confirmar Nueva Contraseña</label>
+                  <input type="password" class="form-control bg-dark text-white border-secondary border-opacity-25" required>
+                </div>
+                <button type="submit" class="btn px-4 text-white fw-bold" style="background: #a100ff; border: none;">Actualizar Contraseña</button>
+              </form>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer-custom border-top border-secondary border-opacity-10 mt-5 pt-5 pb-4" style="background-color: #0b0c10;">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-12 col-md-4">
+          <a class="brand-logo d-flex align-items-center gap-2 text-decoration-none mb-3" href="../index.html">
+            <span class="fs-3 fw-bold text-white">Manga<span style="color: #d178ff;">Flow</span></span>
+          </a>
+          <p class="text-secondary small pe-md-4">La plataforma especializada en manga físico y digital para toda Latinoamérica.</p>
+        </div>
+
+        <div class="col-6 col-md-2">
+          <h6 class="fw-bold text-white mb-3">Explorar</h6>
+          <ul class="list-unstyled text-secondary small d-flex flex-column gap-2 mb-0">
+            <li><a href="../catalogo/catalogo.html" class="text-secondary text-decoration-none hover-white">Catálogo</a></li>
+            <li><a href="../editoriales/editoriales.html" class="text-secondary text-decoration-none hover-white">Editoriales</a></li>
+          </ul>
+        </div>
+
+        <div class="col-6 col-md-3">
+          <h6 class="fw-bold text-white mb-3">Mi cuenta</h6>
+          <ul class="list-unstyled text-secondary small d-flex flex-column gap-2 mb-0">
+            <li><a href="../biblioteca/biblioteca.html" class="text-secondary text-decoration-none hover-white">Mi Biblioteca</a></li>
+            <li><a href="../puntos/puntos.html" class="text-secondary text-decoration-none hover-white">Puntos y Recompensas</a></li>
+          </ul>
+        </div>
+
+        <div class="col-12 col-md-3">
+          <h6 class="fw-bold text-white mb-3">Ayuda</h6>
+          <ul class="list-unstyled text-secondary small d-flex flex-column gap-2 mb-0">
+            <li><a href="#" class="text-secondary text-decoration-none hover-white">Preguntas frecuentes</a></li>
+            <li><a href="#" class="text-secondary text-decoration-none hover-white">Contacto</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../main.js"></script>
+  <script src="cuenta.js"></script>
+</body>
+</html>

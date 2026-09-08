@@ -21,7 +21,7 @@ const populares = [
 ];
 
 document.addEventListener("DOMContentLoaded", () => {
-  // Sincronizar miniaturas del carrusel principal
+  // Configurar carrusel hero
   const heroCarousel = document.getElementById("heroCarousel");
   if (heroCarousel) {
     heroCarousel.addEventListener("slide.bs.carousel", (event) => {
@@ -36,14 +36,15 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Renderizar Novedades
+  // Renderizar sección de novedades
   const novedadesGrid = document.getElementById("novedades-grid");
   if (novedadesGrid) {
+    const relativePrefix = isSubfolder() ? "../" : "";
     novedadesGrid.innerHTML = novedades.map(item => `
       <div class="col">
         <div class="product-card h-100 p-2 d-flex flex-column justify-content-between">
-          <a href="detalle-manga.html?id=${item.id}" class="text-decoration-none">
-            <img src="${item.imagen}" alt="${item.titulo}" class="img-fluid rounded-3 mb-2 w-100" style="height: 220px; object-fit: cover;" />
+          <a href="${relativePrefix}detalle-manga.html?id=${item.id}" class="text-decoration-none">
+            <img src="${relativePrefix}${item.imagen}" alt="${item.titulo}" class="img-fluid rounded-3 mb-2 w-100" style="height: 220px; object-fit: cover;" onerror="this.onerror=null; this.src='https://via.placeholder.com/220x300?text=Sin+Imagen';" />
             <span class="badge bg-dark text-secondary mb-1" style="font-size: 0.65rem;">${item.demografia}</span>
             <h6 class="text-white fw-bold mb-1 fs-6 text-truncate">${item.titulo}</h6>
           </a>
@@ -58,14 +59,15 @@ document.addEventListener("DOMContentLoaded", () => {
     `).join("");
   }
 
-  // Renderizar Populares
+  // Renderizar sección de populares
   const popularesGrid = document.getElementById("populares-grid");
   if (popularesGrid) {
+    const relativePrefix = isSubfolder() ? "../" : "";
     popularesGrid.innerHTML = populares.map(item => `
       <div class="col">
         <div class="product-card h-100 p-3 d-flex flex-column justify-content-between">
-          <a href="detalle-manga.html?id=${item.id}" class="text-decoration-none">
-            <img src="${item.imagen}" alt="${item.titulo}" class="img-fluid rounded-3 mb-3 w-100" style="height: 260px; object-fit: cover;" />
+          <a href="${relativePrefix}detalle-manga.html?id=${item.id}" class="text-decoration-none">
+            <img src="${relativePrefix}${item.imagen}" alt="${item.titulo}" class="img-fluid rounded-3 mb-3 w-100" style="height: 260px; object-fit: cover;" onerror="this.onerror=null; this.src='https://via.placeholder.com/260x350?text=Sin+Imagen';" />
             <span class="badge bg-dark text-secondary mb-1" style="font-size: 0.7rem;">${item.demografia}</span>
             <h5 class="text-white fw-bold mb-2 fs-6 text-truncate">${item.titulo}</h5>
           </a>
@@ -80,69 +82,107 @@ document.addEventListener("DOMContentLoaded", () => {
     `).join("");
   }
 
+  // Inicializar estado global
+  checkUserSession();
   actualizarContadorCarrito();
-  actualizarEstadoSesionUI();
 });
 
-// Obtiene el estado de la sesión
-function obtenerUsuarioActual() {
-  return JSON.parse(localStorage.getItem('usuarioLogueado')) || null;
-}
+// Comprobar la sesión actual del usuario
+function checkUserSession() {
+  const session = JSON.parse(localStorage.getItem("mangaFlow_session")) || JSON.parse(sessionStorage.getItem("mangaFlow_session"));
 
-// Cierra la sesión
-function cerrarSesion() {
-  localStorage.removeItem('usuarioLogueado');
-  window.location.reload();
-}
+  const userBadge = document.getElementById("user-badge");
+  const userActionBtn = document.getElementById("user-action-btn");
 
-// Agregar producto al carrito
-function agregarAlCarrito(productoId) {
-  const usuario = obtenerUsuarioActual();
+  if (session && !session.isGuest && session.email) {
+    const userName = session.nombre || session.email.split("@")[0];
+    
+    if (userBadge) {
+      userBadge.textContent = userName;
+      userBadge.classList.add("bg-primary", "text-white");
+    }
 
-  if (!usuario) {
-    alert("Debes iniciar sesión para agregar productos al carrito.");
-    window.location.href = "login.html";
-    return;
-  }
+    if (userActionBtn) {
+      userActionBtn.href = isSubfolder() ? "../perfil.html" : "./perfil.html";
+      userActionBtn.title = "Mi Cuenta";
+      userActionBtn.innerHTML = '<i class="fa-solid fa-user"></i>';
+    }
 
-  let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
-  carrito.push(productoId);
-  localStorage.setItem('carrito', JSON.stringify(carrito));
-  actualizarContadorCarrito();
-  alert("Producto agregado al carrito");
-}
-
-// Actualiza el contador visual del carrito
-function actualizarContadorCarrito() {
-  const badge = document.getElementById('cart-count');
-  if (badge) {
-    const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
-    badge.textContent = carrito.length;
-  }
-}
-
-// Actualiza elementos del Navbar según la sesión activa
-function actualizarEstadoSesionUI() {
-  const userBadge = document.getElementById('user-badge');
-  const userActionBtn = document.getElementById('user-action-btn');
-  const usuario = obtenerUsuarioActual();
-
-  if (userBadge) {
-    userBadge.textContent = usuario ? usuario.nombre : 'Invitado';
-  }
-  if (userActionBtn) {
-    if (usuario) {
-      userActionBtn.href = "#";
-      userActionBtn.innerHTML = '<i class="fa-solid fa-right-from-bracket"></i>';
-      userActionBtn.title = "Cerrar sesión";
-      userActionBtn.onclick = (e) => {
-        e.preventDefault();
-        cerrarSesion();
-      };
-    } else {
-      userActionBtn.href = "login.html";
+    bypassLoginIfAuthenticated();
+  } else {
+    if (userBadge) {
+      userBadge.textContent = "Invitado";
+      userBadge.classList.remove("bg-primary", "text-white");
+    }
+    if (userActionBtn) {
+      userActionBtn.href = isSubfolder() ? "../login.html" : "./login.html";
+      userActionBtn.title = "Iniciar Sesión";
       userActionBtn.innerHTML = '<i class="fa-solid fa-right-to-bracket"></i>';
-      userActionBtn.title = "Iniciar sesión";
     }
   }
+}
+
+// Redirigir fuera de login si ya está autenticado como usuario registrado
+function bypassLoginIfAuthenticated() {
+  const currentPath = window.location.pathname;
+  if (currentPath.endsWith("login.html")) {
+    const targetPath = isSubfolder() ? "../perfil.html" : "./perfil.html";
+    window.location.href = targetPath;
+  }
+}
+
+// Detecta si la ruta actual está en una subcarpeta
+function isSubfolder() {
+  return window.location.pathname.includes("/catalogo/") || 
+         window.location.pathname.includes("/puntos/") || 
+         window.location.pathname.includes("/editoriales/") || 
+         window.location.pathname.includes("/biblioteca/");
+}
+
+// Agregar producto al carrito por ID
+function agregarAlCarrito(productId) {
+  const todosLosProductos = [...novedades, ...populares];
+  const producto = todosLosProductos.find(p => p.id === productId);
+
+  if (!producto) return;
+
+  let cart = JSON.parse(localStorage.getItem("cart")) || JSON.parse(localStorage.getItem("mangaFlow_cart")) || [];
+  const index = cart.findIndex(item => item.id === productId);
+
+  if (index !== -1) {
+    cart[index].quantity = (cart[index].quantity || 1) + 1;
+  } else {
+    cart.push({ ...producto, quantity: 1 });
+  }
+
+  localStorage.setItem("cart", JSON.stringify(cart));
+  actualizarContadorCarrito();
+}
+
+// Actualizar el número mostrado en la insignia del carrito
+function actualizarContadorCarrito() {
+  const cart = JSON.parse(localStorage.getItem("cart")) || [];
+  const cartCountEl = document.getElementById("cart-count");
+  if (cartCountEl) {
+    const totalItems = cart.reduce((acc, item) => acc + (item.quantity || 1), 0);
+    cartCountEl.textContent = totalItems;
+  }
+}
+
+// Iniciar sesión (para invocar desde login.html)
+function loginUser(userData, remember = true) {
+  if (remember) {
+    localStorage.setItem("mangaFlow_session", JSON.stringify(userData));
+  } else {
+    sessionStorage.setItem("mangaFlow_session", JSON.stringify(userData));
+  }
+  window.location.href = isSubfolder() ? "../index.html" : "./index.html";
+}
+
+// Cerrar sesión
+function logoutUser() {
+  localStorage.removeItem("mangaFlow_session");
+  sessionStorage.removeItem("mangaFlow_session");
+  localStorage.removeItem("activeUser");
+  window.location.href = isSubfolder() ? "../login.html" : "./login.html";
 }

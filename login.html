@@ -8,68 +8,113 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
   <link rel="stylesheet" href="styles.css" />
 </head>
-<body class="login-body">
+<body>
 
-  <div class="text-center mb-4">
-    <a href="index.html" class="text-decoration-none d-inline-flex flex-column align-items-center gap-2 mb-2">
-      <div class="logo-box rounded-circle p-2 d-inline-flex align-items-center justify-content-center" style="background: linear-gradient(135deg, #a100ff, #e100ff); width: 64px; height: 64px;">
-        <img src="images/logo/logoMangaFlow.png" alt="MangaFlow Logo" class="rounded-circle" style="width: 48px; height: 48px; object-fit: cover;" onerror="this.outerHTML='<i class=\'fa-solid fa-book-open text-white fs-4\'></i>';" />
-      </div>
-      <span class="fs-2 fw-bold text-white">Manga<span style="color: #d178ff;">Flow</span></span>
-    </a>
-    <p class="text-secondary small m-0">Inicia sesión para continuar</p>
-  </div>
-
-  <div class="login-card">
-    <div id="error-box" class="alert alert-danger d-none py-2 px-3 small mb-3" role="alert"></div>
-
-    <form id="form-login" novalidate>
-      <div class="mb-3">
-        <label for="correo" class="form-label text-white fw-semibold small mb-2">Correo electrónico</label>
-        <div class="input-group">
-          <span class="input-group-text input-group-text-mf border-end-0">
-            <i class="fa-regular fa-envelope"></i>
-          </span>
-          <input type="email" id="correo" class="form-control form-input-mf border-start-0 ps-0" placeholder="tu@correo.cl" required />
+  <!-- Header Superior -->
+  <header class="text-center py-4 border-bottom border-secondary border-opacity-10" style="background-color: #0b0b12;">
+    <div class="container">
+      <a href="./index.html" class="text-decoration-none">
+        <div class="d-flex justify-content-center align-items-center mb-2">
+          <div class="rounded-circle p-3 d-inline-flex align-items-center justify-content-center" style="background: linear-gradient(135deg, #a100ff, #e100ff); width: 64px; height: 64px;">
+            <img src="images/logo/logoMangaFlow.png" alt="MangaFlow Logo" class="rounded-circle" style="width: 48px; height: 48px; object-fit: cover;" onerror="this.outerHTML='<i class=\'fa-solid fa-book-open text-white fs-3\'></i>';" />
+          </div>
         </div>
-      </div>
+        <h1 class="fs-2 fw-bold text-white mb-1">Manga<span style="color: #d178ff;">Flow</span></h1>
+      </a>
+      <p class="text-secondary small mb-0">Accede a tu cuenta para gestionar tus compras, puntos y biblioteca digital.</p>
+    </div>
+  </header>
 
-      <div class="mb-4">
-        <label for="contrasena" class="form-label text-white fw-semibold small mb-2">Contraseña</label>
-        <div class="input-group">
-          <span class="input-group-text input-group-text-mf border-end-0">
-            <i class="fa-solid fa-lock"></i>
-          </span>
-          <input type="password" id="contrasena" class="form-control form-input-mf border-start-0 border-end-0 ps-0" placeholder="••••••••" required />
-          <button class="input-group-text input-group-text-mf border-start-0" type="button" id="btn-toggle-pass">
-            <i id="eye-icon" class="fa-regular fa-eye"></i>
-          </button>
-        </div>
-      </div>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark border-bottom border-secondary border-opacity-10 px-4 py-3 sticky-top z-3" style="background-color: #0b0b12;">
+    <div class="container-fluid justify-content-center">
 
-      <button type="submit" class="btn-mf-primary">
-        Iniciar sesión
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
       </button>
-    </form>
 
-    <div class="divider-o">o</div>
+      <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+        <ul class="navbar-nav align-items-center gap-2 me-lg-4">
+          <li class="nav-item"><a class="nav-link px-3 text-white fw-semibold" href="./index.html">Inicio</a></li>
+          <li class="nav-item"><a class="nav-link px-3 text-white fw-semibold" href="./catalogo/catalogo.html">Catálogo</a></li>
+          <li class="nav-item"><a class="nav-link px-3 text-white fw-semibold" href="./puntos/puntos.html">Puntos y recompensas</a></li>
+          <li class="nav-item"><a class="nav-link px-3 text-white fw-semibold" href="./editoriales/editoriales.html">Editoriales</a></li>
+          <li class="nav-item"><a class="nav-link px-3 text-white fw-semibold" href="./biblioteca/biblioteca.html">Mi Biblioteca</a></li>
+          <li class="nav-item"><a class="nav-link active px-3 py-1 rounded-3" style="background-color: #3b1754; color: #d178ff !important;" href="./login.html">Mi cuenta</a></li>
+        </ul>
 
-    <button type="button" id="btn-invitado" class="btn-mf-guest">
-      Entrar como invitado
-    </button>
-    
-    <p class="text-center text-secondary text-xs mt-2 mb-0" style="font-size: 0.75rem;">
-      Sin puntos ni compras — solo para explorar
-    </p>
+        <div class="d-flex align-items-center gap-2 mt-3 mt-lg-0">
+          <span id="user-badge" class="badge px-3 py-2 rounded-3" style="background-color: #231238; color: #d178ff; border: 1px solid #3b1754;">Invitado</span>
+          <a id="user-action-btn" href="./login.html" class="btn btn-dark border-0 p-2 text-secondary" style="background-color: #12131f;"><i class="fa-solid fa-right-to-bracket"></i></a>
+          <a href="./carrito.html" class="btn btn-dark border-0 p-2 text-white position-relative" style="background-color: #12131f;">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <span id="cart-count" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="font-size: 0.6rem;">0</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
 
-    <div class="text-center mt-4 pt-2">
-      <span class="text-secondary text-xs" style="font-size: 0.75rem;">
-        Admin: alejandro@mangaflow.cl / 123456
-      </span>
+  <!-- Contenido principal -->
+  <div class="container my-5" style="max-width: 500px;">
+    <div class="card-panel p-4 p-md-5" style="background-color: #12131c; border-radius: 16px; border: 1px solid rgba(255,255,255,0.1);">
+      
+      <div class="text-center mb-4">
+        <h2 class="fw-bold text-white mb-2">Acceso a MangaFlow</h2>
+        <p class="text-secondary small">Selecciona cómo deseas ingresar a la plataforma</p>
+      </div>
+
+      <!-- Alerta de validación / error -->
+      <div id="login-error" class="alert alert-danger d-none py-2 px-3 mb-3 small" role="alert"></div>
+
+      <!-- Formulario de Iniciar Sesión -->
+      <form id="login-form" novalidate>
+        <div class="mb-3">
+          <label for="email" class="form-label text-white small fw-semibold">Correo Electrónico</label>
+          <input type="email" class="form-control bg-dark text-white border-secondary border-opacity-25" id="email" placeholder="nombre@duoc.cl" required>
+          <div class="form-text text-secondary" style="font-size: 0.75rem;">Permitidos: @duoc.cl, @profesor.duoc.cl, @gmail.com</div>
+        </div>
+
+        <div class="mb-4">
+          <label for="password" class="form-label text-white small fw-semibold">Contraseña</label>
+          <input type="password" class="form-control bg-dark text-white border-secondary border-opacity-25" id="password" placeholder="••••••••" required>
+          <div class="form-text text-secondary" style="font-size: 0.75rem;">Entre 4 y 10 caracteres</div>
+        </div>
+
+        <button type="submit" class="btn w-100 py-2 text-white fw-bold mb-3" style="background: linear-gradient(135deg, #a100ff, #e100ff); border: none; border-radius: 8px;">
+          <i class="fa-solid fa-right-to-bracket me-2"></i>Iniciar Sesión
+        </button>
+      </form>
+
+      <div class="position-relative my-4">
+        <hr class="border-secondary opacity-25">
+        <span class="position-absolute top-50 start-50 translate-middle px-3 text-secondary small" style="background-color: #12131c;">O CONTINÚA COMO</span>
+      </div>
+
+      <!-- Botón Modo Invitado -->
+      <button id="btn-guest" class="btn btn-outline-secondary w-100 py-2 fw-semibold text-white d-flex align-items-center justify-content-center gap-2" style="border-radius: 8px;">
+        <i class="fa-solid fa-user-secret"></i> Ingresar como Invitado
+      </button>
+
+      <div class="alert alert-warning mt-3 p-2 small text-center" style="background-color: rgba(255, 193, 7, 0.1); border: 1px solid rgba(255, 193, 7, 0.2); color: #ffc107;">
+        <i class="fa-solid fa-triangle-exclamation me-1"></i> El usuario invitado no tiene acceso a la biblioteca, no puede acumular puntos ni utilizar el carrito de compras.
+      </div>
+
+      <div class="text-center mt-4 pt-2 border-top border-secondary border-opacity-10">
+        <p class="text-secondary small mb-0">¿No tienes cuenta? <a href="./registro.html" class="fw-bold text-decoration-none" style="color: #d178ff;">Regístrate aquí</a></p>
+      </div>
+
     </div>
   </div>
 
-  <script src="main.js"></script>
+  <!-- Footer -->
+  <footer class="footer-custom border-top border-secondary border-opacity-10 mt-5 pt-5 pb-4" style="background-color: #0b0c10;">
+    <div class="container text-center">
+      <p class="text-secondary small mb-0">&copy; 2026 MangaFlow. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="login.js"></script>
 </body>
 </html>

@@ -1,59 +1,65 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const formLogin = document.getElementById('form-login');
-  const btnTogglePass = document.getElementById('btn-toggle-pass');
-  const passInput = document.getElementById('contrasena');
-  const eyeIcon = document.getElementById('eye-icon');
-  const btnInvitado = document.getElementById('btn-invitado');
-  const errorBox = document.getElementById('error-box');
+  const loginForm = document.getElementById('login-form');
+  const btnGuest = document.getElementById('btn-guest');
+  const errorAlert = document.getElementById('login-error');
 
-  // Alternar ocultar/mostrar contraseña
-  if (btnTogglePass && passInput && eyeIcon) {
-    btnTogglePass.addEventListener('click', () => {
-      const isPassword = passInput.type === 'password';
-      passInput.type = isPassword ? 'text' : 'password';
-      eyeIcon.className = isPassword ? 'fa-regular fa-eye-slash' : 'fa-regular fa-eye';
-    });
-  }
-
-  // Manejo del Login
-  if (formLogin) {
-    formLogin.addEventListener('submit', (e) => {
+  // Lógica de inicio de sesión
+  if (loginForm) {
+    loginForm.addEventListener('submit', (e) => {
       e.preventDefault();
-      const correo = document.getElementById('correo').value.trim();
-      const contrasena = passInput.value.trim();
+      errorAlert.classList.add('d-none');
+      errorAlert.textContent = '';
 
-      if (correo === 'alejandro@mangaflow.cl' && contrasena === '123456') {
-        const usuario = {
-          nombre: 'Alejandro',
-          email: correo,
-          puntos: 1250,
-          rol: 'admin'
-        };
-        localStorage.setItem('usuarioLogueado', JSON.stringify(usuario));
-        window.location.href = 'index.html';
-      } else if (correo && contrasena.length >= 4) {
-        const usuario = {
-          nombre: correo.split('@')[0],
-          email: correo,
-          puntos: 500,
-          rol: 'cliente'
-        };
-        localStorage.setItem('usuarioLogueado', JSON.stringify(usuario));
-        window.location.href = 'index.html';
-      } else {
-        if (errorBox) {
-          errorBox.textContent = 'Correo o contraseña incorrectos.';
-          errorBox.classList.remove('d-none');
-        }
+      const email = document.getElementById('email').value.trim();
+      const password = document.getElementById('password').value.trim();
+
+      // Reglas de negocio para correo
+      const allowedDomains = ['@duoc.cl', '@profesor.duoc.cl', '@gmail.com'];
+      const hasValidDomain = allowedDomains.some(domain => email.endsWith(domain));
+
+      if (!email || email.length > 100 || !hasValidDomain) {
+        showError('Correo inválido. Debe contener un dominio válido (@duoc.cl, @profesor.duoc.cl o @gmail.com) y máx. 100 caracteres.');
+        return;
       }
+
+      // Reglas de negocio para contraseña
+      if (!password || password.length < 4 || password.length > 10) {
+        showError('La contraseña debe tener entre 4 y 10 caracteres.');
+        return;
+      }
+
+      //usuario_autenticado
+      const sessionData = {
+        role: 'user',
+        email: email,
+        points: 1500,
+        isGuest: false
+      };
+
+      localStorage.setItem('mangaFlow_session', JSON.stringify(sessionData));
+      window.location.href = './index.html';
     });
   }
 
-  // Manejo de Entrar como Invitado
-  if (btnInvitado) {
-    btnInvitado.addEventListener('click', () => {
-      localStorage.removeItem('usuarioLogueado');
-      window.location.href = 'index.html';
+  // Lógica para modo Invitado
+  if (btnGuest) {
+    btnGuest.addEventListener('click', () => {
+      const guestSession = {
+        role: 'guest',
+        email: 'Invitado',
+        points: 0,
+        isGuest: true
+      };
+
+      // Limpiar carrito al ingresar como invitado
+      localStorage.removeItem('mangaFlow_cart');
+      localStorage.setItem('mangaFlow_session', JSON.stringify(guestSession));
+      window.location.href = './index.html';
     });
+  }
+
+  function showError(message) {
+    errorAlert.textContent = message;
+    errorAlert.classList.remove('d-none');
   }
 });
